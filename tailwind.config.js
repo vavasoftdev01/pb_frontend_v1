@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'betttt': '#FCE6D2' 
+        //
       }
     },
   },

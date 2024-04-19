@@ -19,11 +19,11 @@ function PbSingleComponent(props) {
                     <div className="w-full flex-col">
                         <div className="even">
                             {blue.map(btn => 
-                                <div key={btn.id} className="bg-blue-700 p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-blue-500 border-solid border-2 border-black flex flex-row">
+                                <div key={btn.id} className="bg-blue-900 p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-blue-700 border-solid border-2 border-black flex flex-row">
                                 <span className="w-full">
                                     { btn.caption }
                                 </span>
-                                <span className="bg-blue-800 p-1 rounded-md">
+                                <span className="bg-blue-900 p-1 rounded-md">
                                     { btn.bet_value }
                                 </span>
                                 </div>
@@ -35,11 +35,11 @@ function PbSingleComponent(props) {
                     <div className="w-full flex-col">
                         <div className="odd">
                             {red.map(btn => 
-                                <div key={btn.id} className="bg-red-700 p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-red-500 border-solid border-2 border-black flex flex-row">
+                                <div key={btn.id} className="bg-red-900 p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-red-700 border-solid border-2 border-black flex flex-row">
                                 <span className="w-full">
                                     { btn.caption }
                                 </span>
-                                <span className="bg-red-800 p-1 rounded-md">
+                                <span className="bg-red-900 p-1 rounded-md">
                                     { btn.bet_value }
                                 </span>
                                 </div>     
