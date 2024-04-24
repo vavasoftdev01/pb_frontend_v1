@@ -23,7 +23,7 @@ function PBSingleComponent(props) {
                                 <span className="w-full text-xs">
                                     { btn.caption }
                                 </span>
-                                <span className="bet_btn_blue p-1 rounded-md">
+                                <span className="bg-blue-900 p-1 rounded-md">
                                     { btn.bet_value }
                                 </span>
                                 </div>
@@ -39,7 +39,7 @@ function PBSingleComponent(props) {
                                 <span className="w-full text-xs">
                                     { btn.caption }
                                 </span>
-                                <span className="bet_btn_red p-1 rounded-md">
+                                <span className="bg-red-900 p-1 rounded-md">
                                     { btn.bet_value }
                                 </span>
                                 </div>     
