@@ -17,7 +17,7 @@ function PBRegularBallComponent(props) {
     return (
         <>
              <div className="bg-[#FCE6D2] flex flex-col p-1 rounded-md border-solid border-2 border-b-4 border-black shadow-md">
-                <div className=" mb-1 p-2  border-solid border-b-2 border-black">
+                <div className="m-1 pb-1 -mt-1 -pt-1 border-solid border-b-2 border-black text-xs">
                     { data.title }
                 </div>
                 <div className="flex flex-row gap-2 text-white">

@@ -1,0 +1,72 @@
+{
+    "pbSingle": {
+        "title": "파워볼",
+        "btn_group_blue": [
+            {"id": 1, "caption": "홀", "bet_value": "1.95" },
+            {"id": 2, "caption": "언더  (4.5)", "bet_value": "1.95" }
+        ],
+        "btn_group_red": [
+            {"id": 3, "caption": "짝", "bet_value": 1.95 },
+            {"id": 4, "caption": "오버  (4.5)", "bet_value": "1.95" }
+        ]
+    },
+    
+    "combo1" : {
+        "title": "파워볼 콤보",
+        "btn_group_blue": [
+            {"id": 1, "caption": "홀 + 언더 (4.5)", "bet_value": "4.50" },
+            {"id": 2, "caption": "짝 + 언더 (4.5)", "bet_value": "3.00" }
+        ],
+        "btn_group_red": [
+            {"id": 3, "caption": "홀 + 오버", "bet_value": "3.00" },
+            {"id": 4, "caption": "짝 + 언더 - (4.5)", "bet_value": "4.50" }
+        ]
+    },
+    
+    "regularBall" : {
+        "title": "파워볼 + 일반",
+        "btn_group_blue": [
+            {"id": 1, "caption": "파워볼 홀 + 일반볼 홀", "bet_value": "3.20" },
+            {"id": 2, "caption": "파워볼 홀 + 일반볼 짝", "bet_value": "3.20" }
+        ],
+        "btn_group_red": [
+            {"id": 3, "caption": "파워볼 짝 + 일반볼 홀", "bet_value": "3.20" },
+            {"id": 4, "caption": "파워볼 짝 + 일반볼 짝 (4.5)", "bet_value": "3.20" }
+        ],
+        "btn_grid_1": {
+            "id": 1, "caption": "파워볼 짝 + 일반볼 홀", "bet_value": "3.20"
+        },
+        "btn_grid_2": {
+            "id": 2, "caption": "파워볼 짝 + 일반볼 홀", "bet_value": "3.20"
+        },
+        "btn_grid_3": {
+            "id": 3, "caption": "파워볼 짝 + 일반볼 홀", "bet_value": "3.20"
+        }
+    },
+    
+    "regularBallCombo" : {
+        "title": "파워볼",
+        "btn_3x2_layout": {
+            "btn_group_blue": [
+                {"id": 1, "caption": "홀", "bet_value": "1.95" },
+                {"id": 2, "caption": "언더  (4.5)", "bet_value": "1.95" },
+                {"id": 3, "caption": "언더  (4.5)", "bet_value": "1.95" }
+            ],
+            "btn_group_red": [
+                {"id": 4, "caption": "짝", "bet_value": 1.95 },
+                {"id": 5, "caption": "오버  (4.5)", "bet_value": "1.95" },
+                {"id": 6, "caption": "오버  (4.5)", "bet_value": "1.95" }
+            ]
+        },
+        "btn_2x2_layout": {
+            "btn_group_blue": [
+                {"id": 1, "caption": "홀", "bet_value": "1.95" },
+                {"id": 2, "caption": "언더  (4.5)", "bet_value": "1.95" }
+            ],
+            "btn_group_red": [
+                {"id": 4, "caption": "짝", "bet_value": 1.95 },
+                {"id": 5, "caption": "오버  (4.5)", "bet_value": "1.95" }
+            ]
+        }
+    }
+}
