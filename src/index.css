@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bet_btn_red { background-color: #aa2d37;}
+.bet_btn_blue { background-color: #055abb;}
