@@ -3,7 +3,7 @@ import Home from "./Components/Pages/home.component"
 function App() {
 
   return (
-    <div className="app">
+    <div>
       <Home />
     </div>
   )
