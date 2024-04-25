@@ -29,30 +29,25 @@ function Home() {
             </div>
             <div className="bg-gradient-to-b from-slate-500 to-slate-100 p-2">
                 <div className="flex flex-row">
-                    <div className={"w-full flex flex-col gap-3 p-2 relative bg-orange-700 " + (isBettingFormVisible == true ? 'bg-pink-300': 'bg-violet-500') }>
-                        <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
-                        <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
+                    <div className="w-full flex flex-col gap-3 p-2 relative">
+                        <div className={ (isBettingFormVisible == true ? 'blur-sm': '') }>
+                            <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
+                            <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
+                            <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
+                            <PBRegularBallComponent config = { BConfig.regularBall } />
+                            <PBRegularBallComboComponent config = { BConfig.regularBallCombo } />
+                        </div>
 
-                            {/* TODO: */}
-                            {isBettingFormVisible ? 
-                             <div className="mt-[10rem] absolute">
+                        {/* TODO: */}
+                        {isBettingFormVisible ? 
+                            <div className="mt-[10rem] absolute">
                                 <PBBettingFormComponent onPlaceBet={ toggleBettingForm } />
                             </div>
-                                : ''
-                            }
-
-                            
-
-                       
-                        <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
-                        <PBRegularBallComponent config = { BConfig.regularBall } />
-                        <PBRegularBallComboComponent config = { BConfig.regularBallCombo } />
+                            : ''
+                        }
 
                         {/* Betting Modal */}
-                        {/* {isBettingFormVisible ? <div className="relative"><PBBettingFormComponent /></div>  : ''} */}
-
-                        
-                        
+                        {/* {isBettingFormVisible ? <div className="relative"><PBBettingFormComponent /></div>  : ''} */}  
                         
                     </div>
 
