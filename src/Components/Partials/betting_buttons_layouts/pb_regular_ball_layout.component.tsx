@@ -54,7 +54,7 @@ function PBRegularBallComponent(props) {
                 </div>
                 <div className="w-full flex flex-row gap-1">
                     {/* 3 buttons layout.. */}
-                    <div key={btn_grid_1.id} className="bg-green-700 p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-green-600 border-solid border-2 border-black flex flex-row text-white">
+                    <div key={btn_grid_1.id} className="w-full bg-green-700 p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-green-600 border-solid border-2 border-black flex flex-row text-white">
                         <span className="w-full text-xs">
                             { btn_grid_1.caption }
                         </span>
@@ -63,7 +63,7 @@ function PBRegularBallComponent(props) {
                         </span>
                     </div>
 
-                    <div key={btn_grid_2.id} className="bet_btn_blue p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-blue-600 border-solid border-2 border-black flex flex-row text-white">
+                    <div key={btn_grid_2.id} className="w-full bet_btn_blue p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-blue-600 border-solid border-2 border-black flex flex-row text-white">
                         <span className="w-full text-xs">
                             { btn_grid_2.caption }
                         </span>
@@ -72,7 +72,7 @@ function PBRegularBallComponent(props) {
                         </span>
                     </div>
 
-                    <div key={btn_grid_3.id} className="bet_btn_red p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-red-600 border-solid border-2 border-black flex flex-row text-white">
+                    <div key={btn_grid_3.id} className="w-full bet_btn_red p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-red-600 border-solid border-2 border-black flex flex-row text-white">
                         <span className="w-full text-xs">
                             { btn_grid_3.caption }
                         </span>
