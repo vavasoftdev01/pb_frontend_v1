@@ -15,8 +15,9 @@ function Home() {
 
     const toggleBettingForm = () => {
         setIsBettingFormVisible(!isBettingFormVisible)
-        
     }
+
+
     
   return (
     <div className="flex justify-center w-full">
@@ -29,25 +30,29 @@ function Home() {
             </div>
             <div className="bg-gradient-to-b from-slate-500 to-slate-100 p-2">
                 <div className="flex flex-row">
-                    <div className="w-full flex flex-col gap-3 p-2 relative">
-                        <div className={ (isBettingFormVisible == true ? 'blur-sm': '') }>
-                            <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
-                            <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
-                            <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
-                            <PBRegularBallComponent config = { BConfig.regularBall } />
-                            <PBRegularBallComboComponent config = { BConfig.regularBallCombo } />
+                    <div className="w-full flex flex-col p-2 flex-wrap">
+                        <div className="dynamic-panel relative">
+                            <div className={(isBettingFormVisible == true ? 'blur-sm': '') }>
+                                <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
+                                <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
+                                <PBSingleComponent config = { BConfig.pbSingle } onPlaceBet={ toggleBettingForm } />
+                                <PBRegularBallComponent config = { BConfig.regularBall } onPlaceBet={ toggleBettingForm } />
+                                <PBRegularBallComboComponent config = { BConfig.regularBallCombo } onPlaceBet={ toggleBettingForm } />
+                            </div>
+
+                            {isBettingFormVisible ? 
+                                <div className="my-[-45rem] absolute ">
+                                    <PBBettingFormComponent onPlaceBet={ toggleBettingForm } />
+                                </div>
+                                : ''
+                            }
                         </div>
 
-                        {/* TODO: */}
-                        {isBettingFormVisible ? 
-                            <div className="mt-[10rem] absolute">
-                                <PBBettingFormComponent onPlaceBet={ toggleBettingForm } />
-                            </div>
-                            : ''
-                        }
-
-                        {/* Betting Modal */}
-                        {/* {isBettingFormVisible ? <div className="relative"><PBBettingFormComponent /></div>  : ''} */}  
+                        {/* TODO: Show this panel when timer stop.. */}
+                        {/* <div className="grid grid-cols bg-red-300 h-full">
+                            ss
+                        </div> */}
+                        
                         
                     </div>
 

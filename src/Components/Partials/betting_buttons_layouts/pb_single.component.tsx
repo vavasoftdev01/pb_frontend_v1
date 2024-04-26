@@ -10,7 +10,7 @@ function PBSingleComponent(props) {
     return(
         <>
             {/* button group #1 - start - TODO: refactor prop/ref based values*/}
-            <div className="bg-[#FCE6D2] flex flex-col p-1 rounded-md border-solid border-2 border-b-4 border-black shadow-md">
+            <div className="bg-[#FCE6D2] flex flex-col p-1 mb-1 rounded-md border-solid border-2 border-b-4 border-black shadow-md">
                 <div className="m-1 pb-1 -mt-1 -pt-1 border-solid border-b-2 border-black text-xs">
                     { data.title }
                 </div>
