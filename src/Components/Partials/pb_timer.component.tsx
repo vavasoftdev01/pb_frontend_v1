@@ -42,8 +42,8 @@ function PBTimer () {
 
         setTimer(100)
 
-       console.log('timer stop')
-       console.log(timer)
+    //    console.log('timer stop')
+    //    console.log(timer)
        
     }
 
