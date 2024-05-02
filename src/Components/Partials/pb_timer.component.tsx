@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function PBTimer () {
+function PBTimer (props) {
  
     const [timer, setTimer] = useState(100) // Init 1 min..
 
@@ -39,6 +39,8 @@ function PBTimer () {
     const timerStop = () => {
 
         setProgressColors((progressColors) => 'rgb(22 163 74)')
+
+        props.getTimer()
 
         setTimer(100)
 

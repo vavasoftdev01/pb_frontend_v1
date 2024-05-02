@@ -12,13 +12,33 @@ function PBRegularBallComboComponent(props) {
 
     const md_blue = data.btn_2x2_layout.btn_group_blue
 
+    const caption_balls = data.caption_balls
 
 
     return (
         <>
             <div className="bg-[#FCE6D2] flex flex-col p-1 mb-1 rounded-md border-solid border-2 border-b-4 border-black shadow-md">
-                <div className="m-1 pb-1 -mt-1 -pt-1 border-solid border-b-2 border-black text-xs">
-                    { data.title }
+                <div className="m-1 -pb-1 -mt-1 w-full -ml-1 mr-4 -pt-1 border-solid border-b-2 border-black text-xs flex flex-row">
+                    <p className="ml-2 w-24">
+                        { data.title }
+                        
+                    </p>
+                    
+                    <div className="ball_icon_container w-48 flex flex-row">
+                    {
+                        caption_balls.map(ball => (
+                            
+                            <div key={ball} className={"w-3 h-3 rounded-full self-center ml-1 border-solid border-[0.1rem] border-black bg-"+ball+"-600"}>
+                                &nbsp;
+                            </div>
+                            
+                        ))
+                    }
+
+                        
+                    </div>
+
+
                 </div>
 
                 {/* Main */}

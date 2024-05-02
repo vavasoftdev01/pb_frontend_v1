@@ -5,7 +5,7 @@ function PBBettingFormComponent(props) {
 
     return(
         <>
-            <div className="bg-slate-100 border-solid border-2 border-black rounded-lg flex flex-col sm:w-auto md:w-[33rem] max-md:lg:w-auto lg:max-xl:w-fit z-10">
+            <div className="bg-slate-100 border-solid border-2 border-black rounded-lg flex flex-col sm:w-auto md:w-[35.8rem] max-md:lg:w-auto lg:max-xl:w-fit z-10">
                 <div className="bet_btn_blue flex flex-row text-white border-solid border-b-2 border-black">
                     <span className="w-full text-xs p-1">#1200(1328665) ID:4959389405</span>
                     <span className="w-full">배팅 슬립</span>

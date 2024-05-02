@@ -34,7 +34,7 @@ function PBGameContainerComponent(props) {
     const [color4, setColor4] = useState(colors[Math.floor(Math.random() * colors.length)])
     // Change state to normal variables
 
-
+    const isDraw = props.timerStatus
    
 
     const draw = () => {
@@ -90,7 +90,7 @@ function PBGameContainerComponent(props) {
 
     useEffect(() => {
         setTimeout(() => {
-            draw()
+            //draw()
         }, 1000)
         
     }, [])
@@ -98,14 +98,14 @@ function PBGameContainerComponent(props) {
 
     return(
         <>
-            <div className="pb-bg-main_container bg-slate-600 rounded-lg h-3/5 flex relative w-full border-[0.3rem] border-solid border-slate-900">
+            <div className="pb-bg-main_container bg-slate-600 rounded-lg h-80 flex relative w-full border-[0.3rem] border-solid border-slate-900">
                <div className="pb-bg w-full h-full relative flex bg-green-200">
-                    <div className="ball-machine w-1/2 h-full bg-slate-900 mx-auto border-[0.3rem] border-solid border-black rounded-xl">
+                    <div className="ball-machine w-80 h-full bg-slate-900 mx-auto border-[0.3rem] border-solid border-black rounded-xl">
                         <div className="h-full relative">
                             {/* Conditional rendering  after timer stop */}
-                            <div className="beam-loader h-full w-full absolute flex flex-row">
+                            <div className={"beam-loader h-full w-full absolute flex flex-row "+(isDraw ? "hidden": "")}>
                                 <div className="w-1/2">
-                                    <img src="./images/beam_g2.gif" className="relative h-64 -ml-1 -skew-x-12 -mt-2" alt="" />
+                                    <img src="./images/beam_g2.gif" className="relative h-64 -ml-2 -skew-x-6 -mt-3" alt="" />
                                 </div>
                                 <div className="w-1/2 ">
                                     <img src="./images/beam_g2.gif" className="relative h-64 ml-2 -mt-1 skew-x-24 -scale-x-100" alt="" />
@@ -178,6 +178,8 @@ function PBGameContainerComponent(props) {
                                     </div>
                                 </div> 
                                 */}
+                                
+                                {/* Append div into the container for results, add fadeIn effects */}
                                 
                             </div>
                         </div>
