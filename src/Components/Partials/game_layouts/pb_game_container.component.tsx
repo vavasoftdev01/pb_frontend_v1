@@ -1,99 +1,150 @@
 import React, { useEffect, useState } from "react";
 
 function PBGameContainerComponent(props) {
-    const colors = ['bg-green-600', 'bg-red-600', 'bg-yellow-600', 'bg-blue-600']
-
-    const [isDraw1, setIsDraw1] = useState('mt-[15rem] opacity-5')
-    const [isShow1, setIsShow1] = useState('')
-
-    const [isDraw2, setIsDraw2] = useState('mt-[15rem] opacity-5')
-    const [isShow2, setIsShow2] = useState('')
-
-    const [isDraw3, setIsDraw3] = useState('mt-[15rem] opacity-5')
-    const [isShow3, setIsShow3] = useState('')
-
-    const [isDraw4, setIsDraw4] = useState('mt-[15rem] opacity-5')
-    const [isShow4, setIsShow4] = useState('')
-
-    const [isDraw5, setIsDraw5] = useState('mt-[15rem] opacity-5')
-    const [isShow5, setIsShow5] = useState('')
-
-    const [isDraw6, setIsDraw6] = useState('mt-[15rem] opacity-5')
-    const [isShow6, setIsShow6] = useState('')
-
-    const [result1, setResult1] = useState(Math.floor(Math.random() * 100))
-    const [result2, setResult2] = useState(Math.floor(Math.random() * 100))
-    const [result3, setResult3] = useState(Math.floor(Math.random() * 100))
-    const [result4, setResult4] = useState(Math.floor(Math.random() * 100))
-    const [result5, setResult5] = useState(Math.floor(Math.random() * 100))
-    const [result6, setResult6] = useState(Math.floor(Math.random() * 100))
-
-    const [color1, setColor1] = useState(colors[Math.floor(Math.random() * colors.length)])
-    const [color2, setColor2] = useState(colors[Math.floor(Math.random() * colors.length)])
-    const [color3, setColor3] = useState(colors[Math.floor(Math.random() * colors.length)])
-    const [color4, setColor4] = useState(colors[Math.floor(Math.random() * colors.length)])
-    // Change state to normal variables
 
     const isDraw = props.timerStatus
-   
 
-    const draw = () => {
+    const ballColors = ['./images/pballs/red.png', './images/pballs/green.png', './images/pballs/blue.png', './images/pballs/yellow.png']
+
+    const[b1, setB1] = useState({
+        color: ballColors[Math.floor(Math.random() * ballColors.length)],
+        number: 0,
+        style: 'opacity-0'
+    })
+
+    const[b2, setB2] = useState({
+        color: ballColors[Math.floor(Math.random() * ballColors.length)],
+        number: 0,
+        style: 'opacity-0'
+    })
+
+    const[b3, setB3] = useState({
+        color: ballColors[Math.floor(Math.random() * ballColors.length)],
+        number: 0,
+        style: 'opacity-0'
+    })
+
+    const[b4, setB4] = useState({
+        color: ballColors[Math.floor(Math.random() * ballColors.length)],
+        number: 0,
+        style: 'opacity-0'
+    })
+
+    const[b5, setB5] = useState({
+        color: ballColors[Math.floor(Math.random() * ballColors.length)],
+        number: 0,
+        style: 'opacity-0'
+    })
+
+    const[b6, setB6] = useState({
+        color: './images/pballs/black.png',
+        number: 0,
+        style: 'opacity-0'
+    })
+
+    const drawBalls = () => {
+        
+        setTimeout(() => {
+            setB1({
+                color: ballColors[Math.floor(Math.random() * ballColors.length)],
+                number: Math.floor(Math.random() * 100),
+                style: 'mt-[12.5rem] ease-in-out duration-300 opacity-100'
+            })
+        }, 1000)
 
         setTimeout(() => {
-            setIsDraw1('mt-[1.5rem] ease-in-out duration-700 opacity-100 scale-y-100')
-            setTimeout(() => {
-                setIsShow1('rotate-[-120deg] ml-10 mt-10 ease-in-out duration-700')
-                setIsDraw1('mt-[7rem] ease-in-out duration-700 opacity-100')
-            }, 1000)
-        }, 2000);
+            setB2({
+                color: ballColors[Math.floor(Math.random() * ballColors.length)],
+                number: Math.floor(Math.random() * 100),
+                style: 'mt-[12.5rem] ease-in-out duration-300'
+            })
+        }, 2000)
 
         setTimeout(() => {
-            setIsDraw2('mt-[1.5rem] ease-in-out duration-700 opacity-100 scale-y-100')
-            setTimeout(() => {
-                setIsShow2('rotate-[-60deg] ml-8 mt-6 ease-in-out duration-700')
-                setIsDraw2('mt-[7rem] ease-in-out duration-700 opacity-100')     
-            }, 2000)
-        }, 3000);
+            setB3({
+                color: ballColors[Math.floor(Math.random() * ballColors.length)],
+                number: Math.floor(Math.random() * 100),
+                style: 'mt-[12.5rem] ease-in-out duration-300'
+            })
+        }, 3000)
 
         setTimeout(() => {
-            setIsDraw3('mt-[1.5rem] ease-in-out duration-700 opacity-100 scale-y-100')
-            setTimeout(() => {
-                setIsShow3('rotate-[-10deg] ml-8 mt-[0.8rem] ease-in-out duration-300')
-                setIsDraw3('mt-[7rem] ease-in-out duration-300 opacity-100')     
-            }, 3000)
-        },4000)
+            setB4({
+                color: ballColors[Math.floor(Math.random() * ballColors.length)],
+                number: Math.floor(Math.random() * 100),
+                style: 'mt-[12.5rem] ease-in-out duration-300'
+            })
+        }, 4000)
 
         setTimeout(() => {
-            setIsDraw4('mt-[1.5rem] ease-in-out duration-300 opacity-100 scale-y-100')
-            setTimeout(() => {
-                setIsShow4('rotate-[-40deg] ease-in-out duration-300')
-                setIsDraw4('mt-[7rem] ease-in-out duration-300 opacity-100')     
-            }, 4000)
-        },5000)
+            setB5({
+                color: ballColors[Math.floor(Math.random() * ballColors.length)],
+                number: Math.floor(Math.random() * 100),
+                style: 'mt-[12.5rem] ease-in-out duration-300'
+            })
+        }, 5000)
 
         setTimeout(() => {
-            setIsDraw5('mt-[1.5rem] ease-in-out duration-300 opacity-100 scale-y-100')
-            setTimeout(() => {
-                setIsShow5('rotate-[-30deg] ease-in-out duration-300')
-                setIsDraw5('mt-[7rem] ease-in-out duration-300 opacity-100')     
-            }, 5000)
-        },4000)
+            setB6({
+                color: ballColors[Math.floor(Math.random() * ballColors.length)],
+                number: Math.floor(Math.random() * 100),
+                style: 'mt-[12.5rem] ease-in-out duration-300'
+            })
+        }, 6000)
 
-        setTimeout(() => {
-            setIsDraw6('mt-[1.5rem] ease-in-out duration-300 opacity-100 scale-y-100')
-            setTimeout(() => {
-                setIsShow6('rotate-[90deg] ease-in-out duration-300')
-                setIsDraw6('mt-[7rem] ease-in-out duration-300 opacity-100')     
-            }, 4500)
-        },5000)
+        console.log(b1.color)
+       
+    }
+
+    const setDefault = () => {
+        
+        setB1({
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: 'opacity-0'
+        })
+
+        setB2({
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: 'opacity-0'
+        })
+
+        setB3({
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: 'opacity-0'
+        })
+
+        setB4({
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: 'opacity-0'
+        })
+
+
+        setB5({
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: 'opacity-0'
+        })
+
+        setB6({
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: 'opacity-0'
+        })
+ 
     }
 
     useEffect(() => {
-        setTimeout(() => {
-            //draw()
-        }, 1000)
+
+        if(isDraw) {
+            drawBalls()
+        }
         
-    }, [])
+        setDefault()
+    }, [props])
 
 
     return(
@@ -113,71 +164,55 @@ function PBGameContainerComponent(props) {
                             </div>
                             <img src="./images/BallsMachine_case.webp" className="object-cover absolute"/>
                             <img src="./images/BallsMachine_mx.webp" className="object-cover absolute" onClick={() => draw()}/>
-                            <div className="draw-results-container w-full h-2/3 relative ">
-                            {/* Conditional rendering draw starts.. */}
-                            {/* hover:rotate-[90deg] */}
-                                {/* <div className={"mx-auto w-7 h-full bg-purple-500 z-10 p-0 "+ isShow}>
-                                    <div id="results_container" className={"ball_up "+ isDraw}>
-                                        <span className={"ball_init bg-red-600 w-5 h-5 rounded-2xl p-1 text-white "}>69</span>
+                            <div className="draw-results-container w-full h-full relative">
+                                <div className={"absolute w-full mt-[3rem] inline-flex space-x-1"}>
+                                    <div className="bcont1">
+                                        <div className="binder relative">
+                                            <img  src={b1.color} className={"relative w-11 h-11 ml-1 z-10 "+ b1.style} alt="" />
+                                        </div>     
                                     </div>
-                                </div> */}
 
-                                {/* 
-                                    Create 5x divs for every draw 
-                                    Set intervals after every draw
-                                    Set specific css alignments for every draw
-                                    Add randominity
-                                */}
-                                <div id="cont1" className={"left-0 right-0 mx-auto w-7 h-full  z-10 p-0 absolute "+ isShow1}>
-                                    <div className={"ball_up "+ isDraw1}>
-                                        <span className={"ball_init w-3 h-3 rounded-full p-2 text-white "+ color1}>{ result1 }</span>
+                                    <div className="bcont1">
+                                        <div className="binder relative">
+                                            <img  src={b2.color} className={"relative w-11 h-11 ml-1 z-10 "+ b2.style} alt="" />
+                                        </div>     
                                     </div>
-                                </div>
-                                <div id="cont2" className={"left-0 right-0 mx-auto w-7 h-full  z-10 p-0 absolute "+ isShow2}>
-                                    <div className={"ball_up "+ isDraw2}>
-                                        <span className={"ball_init w-3 h-3 rounded-full p-2 text-white "+ color2}>{ result2 }</span>
-                                    </div>
-                                </div>
-                                <div id="cont3" className={"left-0 right-0 mx-auto w-7 h-full  z-10 p-0 absolute "+ isShow3}>
-                                    <div className={"ball_up "+ isDraw3}>
-                                        <span className={"ball_init w-3 h-3 rounded-full p-2 text-white "+ color3}>{ result3 }</span>
-                                    </div>
-                                </div>
-                                {/* 
-                                <div id="cont3" className={"left-0 right-0 mx-auto w-7 h-full  z-10 p-0 absolute "+ isShow3}>
-                                    <div className={"ball_up "+ isDraw3}>
-                                        <span className={"ball_init w-5 h-5 rounded-2xl p-2 text-white "+ color3}>{ result3 }</span>
-                                    </div>
-                                </div>
-                                <div id="cont4" className={"left-0 right-0 mx-auto w-7 h-full  z-10 p-0 absolute "+ isShow4}>
-                                    <div className={"ball_up "+ isDraw4}>
-                                        <span className={"ball_init w-5 h-5 rounded-2xl p-2 text-white "+ color1}>{ result4 }</span>
-                                    </div>
-                                </div>
-                                <div id="cont5" className={"left-0 right-0 mx-auto w-7 h-full  z-10 p-0 absolute "+ isShow5}>
-                                    <div className={"ball_up "+ isDraw5}>
-                                        <span className={"ball_init w-5 h-5 rounded-2xl p-2 text-white "+ color3}>{ result5 }</span>
-                                    </div>
-                                </div>
-                                <div id="cont6" className={"left-0 right-0 mx-auto w-7 h-full  z-10 p-0 absolute "+ isShow6}>
-                                    <div className={"ball_up "+ isDraw6}>
-                                        <span className={"ball_init w-5 h-5 rounded-2xl p-2 text-white bg-black"}>{ result6 }</span>
-                                    </div>
-                                </div> */}
-                               
 
-                               {/* Layout ref */}
-                                
-
-
-
-                                {/* 
-                                <div className="results_container_zoomed relative h-full">
-                                    <div className="con h-1/4 bg-green-400 mt-[20rem] absolute w-full">
-                                        
+                                    <div className="bcont1">
+                                        <div className="binder relative">
+                                            <img  src={b3.color} className={"relative w-11 h-11 ml-1 z-10 "+ b3.style} alt="" />
+                                        </div>     
                                     </div>
+
+                                    <div className="bcont1">
+                                        <div className="binder relative">
+                                            <img  src={b4.color} className={"relative w-11 h-11 ml-1 z-10 "+ b4.style} alt="" />
+                                        </div>     
+                                    </div>
+
+                                    <div className="bcont1">
+                                        <div className="binder relative">
+                                            <img  src={b5.color} className={"relative w-11 h-11 ml-1 z-10 "+ b5.style} alt="" />
+                                        </div>     
+                                    </div>
+
+                                    <div className="bcont1">
+                                        <div className="binder relative">
+                                            <img  src="./images/pballs/black.png" className={"relative w-11 h-11 ml-1 z-10 "+ b6.style} alt="" />
+                                        </div>     
+                                    </div>
+                                     
+                                     {/* <img src="./images/pballs/blue.png" className="relative w-12 h-12" alt="" />
+                                     <img src="./images/pballs/yellow.png" className="relative w-12 h-12" alt="" />
+                                     <img src="./images/pballs/green.png" className="relative w-12 h-12" alt="" />
+                                     <img src="./images/pballs/red.png" className="relative w-12 h-12" alt="" />
+                                     <img src="./images/pballs/black.png" className="relative w-12 h-12" alt="" /> */}
+                                </div>
+
+                                <div className={"absolute w-full " + (isDraw ? "mt-[15rem] opacity-100 ease-in-out duration-300": "mt-[25rem] opacity-0 ease-in-out duration-300")}>
+                                     <img src="./images/BallsMachine_result.webp" className="relative" alt="" />
                                 </div> 
-                                */}
+                                
                                 
                                 {/* Append div into the container for results, add fadeIn effects */}
                                 

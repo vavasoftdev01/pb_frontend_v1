@@ -6,16 +6,15 @@ function PBTimer (props) {
 
     const [timerMessage, setTimerMessage] = useState('배팅하세요')
 
-
     const [progressColors, setProgressColors] = useState('rgb(22 163 74)')
 
     const timerStart = () => {
 
-        setTimeout(() => {
-            setTimer((timer) => timer - 1)
+        let timeOut = setTimeout(() => {
+            setTimer((timer) => timer - 2)
 
             
-        }, 100);
+        }, 600);
 
         // 1s = 1000,
 
@@ -31,6 +30,7 @@ function PBTimer (props) {
 
         // times up
         if(timer <= 0) {
+            clearTimeout(timeOut)
             timerStop()
         }
         
@@ -43,9 +43,6 @@ function PBTimer (props) {
         props.getTimer()
 
         setTimer(100)
-
-    //    console.log('timer stop')
-    //    console.log(timer)
        
     }
 
@@ -58,7 +55,7 @@ function PBTimer (props) {
     return(
         <>
             <div className="relative mb-6">
-                <span className="flex absolute rounded-t-lg" style={{ width: timer+'%', transition: '0.1s', transitionTimingFunction: 'ease-in', backgroundColor: progressColors }}>&nbsp;</span>
+                <span className="flex absolute rounded-t-lg" style={{ width: timer+'%', transition: '0.5s', transitionTimingFunction: 'ease-in', backgroundColor: progressColors }}>&nbsp;</span>
                 <span className="absolute bottom-0 left-0 right-0 top-0 grid place-items-center text-white">{ timerMessage } - 00: { timer.toString().padStart(2, '0')} </span>
             </div>
         </>

@@ -44,7 +44,7 @@ function PBDrawPopupPanelComponent(props) {
                         </div>
                         
                     </div>
-                    <div className="bg-white border-solid border-2 border-b-4 p-2 border-black rounded-lg h-[50%] w-[90%] mx-auto flex flex-row">
+                    <div className="bg-white border-solid border-2 border-b-4 p-2 border-black rounded-lg h-[50%] w-[95%] mx-auto flex flex-row">
                         <div className="flex flex-col text-start w-1/2 text-sm">
                             <p>파워볼홀</p>
                             <p>
@@ -90,7 +90,7 @@ function PBDrawPopupPanelComponent(props) {
                         </div>
                         
                     </div>
-                    <div className="bg-white border-solid border-2 border-b-4 p-2 border-black rounded-lg h-[50%] w-[90%] mx-auto flex flex-row">
+                    <div className="bg-white border-solid border-2 border-b-4 p-2 border-black rounded-lg h-[50%] w-[95%] mx-auto flex flex-row">
                         <div className="flex flex-col text-start w-1/2 text-sm">
                             <p>파워볼홀</p>
                             <p>
