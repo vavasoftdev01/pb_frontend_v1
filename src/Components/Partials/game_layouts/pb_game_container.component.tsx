@@ -6,89 +6,148 @@ function PBGameContainerComponent(props) {
 
     const ballColors = ['./images/pballs/red.png', './images/pballs/green.png', './images/pballs/blue.png', './images/pballs/yellow.png']
 
+    const ballTransition = 'mt-[12.5rem] ease-in-out duration-300 opacity-100'
+
+    const ballDefaultStyle = 'opacity-0' 
+
+
     const[b1, setB1] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
         number: 0,
-        style: 'opacity-0'
+        style: ballDefaultStyle
     })
 
     const[b2, setB2] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
         number: 0,
-        style: 'opacity-0'
+        style: ballDefaultStyle
     })
 
     const[b3, setB3] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
         number: 0,
-        style: 'opacity-0'
+        style: ballDefaultStyle
     })
 
     const[b4, setB4] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
         number: 0,
-        style: 'opacity-0'
+        style: ballDefaultStyle
     })
 
     const[b5, setB5] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
         number: 0,
-        style: 'opacity-0'
+        style: ballDefaultStyle
     })
 
     const[b6, setB6] = useState({
         color: './images/pballs/black.png',
         number: 0,
-        style: 'opacity-0'
+        style: ballDefaultStyle
     })
 
-    const drawBalls = () => {
+    const[balls, setBalls] = useState([
+        {
+            id: 'ball_1',
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: ballDefaultStyle
+        },
+        {
+            id: 'ball_2',
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: ballDefaultStyle
+        },
+        {
+            id: 'ball_3',
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: ballDefaultStyle
+        },
+        {
+            id: 'ball_4',
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: ballDefaultStyle
+        },
+        {
+            id: 'ball_5',
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: ballDefaultStyle
+        },
+        {
+            id: 'ball_6',
+            color: ballColors[Math.floor(Math.random() * ballColors.length)],
+            number: 0,
+            style: ballDefaultStyle
+        }
         
+    ])
+
+    const drawBalls = () => {
+        // TODO..
+        const newBalls = balls.map((ball) => {
+            return { ...ball, style: ballTransition, number: Math.floor(Math.random() * 99) + 1 }
+        })
+
+       setTimeout(() => {
+            for (let b = 0; b < balls.length; b++) {
+                setTimeout(() => {
+                    setBalls((prevBalls) => newBalls)
+                },2000)
+            }
+       },3000)
+        setBalls((prevBalls) => newBalls)
+        
+
         setTimeout(() => {
             setB1({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 100),
-                style: 'mt-[12.5rem] ease-in-out duration-300 opacity-100'
+                number: Math.floor(Math.random() * 99) + 1,
+                style: ballTransition
             })
         }, 1000)
 
         setTimeout(() => {
             setB2({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 100),
-                style: 'mt-[12.5rem] ease-in-out duration-300'
+                number: Math.floor(Math.random() * 99) + 1,
+                style: ballTransition
             })
         }, 2000)
 
         setTimeout(() => {
             setB3({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 100),
-                style: 'mt-[12.5rem] ease-in-out duration-300'
+                number: Math.floor(Math.random() * 99) + 1,
+                style: ballTransition
             })
         }, 3000)
 
         setTimeout(() => {
             setB4({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 100),
-                style: 'mt-[12.5rem] ease-in-out duration-300'
+                number: Math.floor(Math.random() * 99) + 1,
+                style: ballTransition
             })
         }, 4000)
 
         setTimeout(() => {
             setB5({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 100),
-                style: 'mt-[12.5rem] ease-in-out duration-300'
+                number: Math.floor(Math.random() * 99) + 1,
+                style: ballTransition
             })
         }, 5000)
 
         setTimeout(() => {
             setB6({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 100),
-                style: 'mt-[12.5rem] ease-in-out duration-300'
+                number: Math.floor(Math.random() * 99) + 1,
+                style: ballTransition
             })
         }, 6000)
 
@@ -101,49 +160,51 @@ function PBGameContainerComponent(props) {
         setB1({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
             number: 0,
-            style: 'opacity-0'
+            style: ballDefaultStyle
         })
 
         setB2({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
             number: 0,
-            style: 'opacity-0'
+            style: ballDefaultStyle
         })
 
         setB3({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
             number: 0,
-            style: 'opacity-0'
+            style: ballDefaultStyle
         })
 
         setB4({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
             number: 0,
-            style: 'opacity-0'
+            style: ballDefaultStyle
         })
 
 
         setB5({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
             number: 0,
-            style: 'opacity-0'
+            style: ballDefaultStyle
         })
 
         setB6({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
             number: 0,
-            style: 'opacity-0'
+            style: ballDefaultStyle
         })
  
     }
 
     useEffect(() => {
 
+        console.log(balls.length)
+        
         if(isDraw) {
             drawBalls()
         }
-        
         setDefault()
+        
     }, [props])
 
 
@@ -163,42 +224,48 @@ function PBGameContainerComponent(props) {
                                 </div>
                             </div>
                             <img src="./images/BallsMachine_case.webp" className="object-cover absolute"/>
-                            <img src="./images/BallsMachine_mx.webp" className="object-cover absolute" onClick={() => draw()}/>
+                            <img src="./images/BallsMachine_mx.webp" className="object-cover absolute" />
                             <div className="draw-results-container w-full h-full relative">
                                 <div className={"absolute w-full mt-[3rem] inline-flex space-x-1"}>
                                     <div className="bcont1">
-                                        <div className="binder relative">
+                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b1.style}>
+                                            <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b1.number}</p>
                                             <img  src={b1.color} className={"relative w-11 h-11 ml-1 z-10 "+ b1.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
-                                        <div className="binder relative">
+                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b2.style}>
+                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b2.number}</p>
                                             <img  src={b2.color} className={"relative w-11 h-11 ml-1 z-10 "+ b2.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
-                                        <div className="binder relative">
+                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b3.style}>
+                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b3.number}</p>
                                             <img  src={b3.color} className={"relative w-11 h-11 ml-1 z-10 "+ b3.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
-                                        <div className="binder relative">
+                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b4.style}>
+                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b4.number}</p>
                                             <img  src={b4.color} className={"relative w-11 h-11 ml-1 z-10 "+ b4.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
-                                        <div className="binder relative">
+                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b5.style}>
+                                            <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b5.number}</p>
                                             <img  src={b5.color} className={"relative w-11 h-11 ml-1 z-10 "+ b5.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
-                                        <div className="binder relative">
-                                            <img  src="./images/pballs/black.png" className={"relative w-11 h-11 ml-1 z-10 "+ b6.style} alt="" />
+                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b6.style}>
+                                            <p className="text-white absolute z-20 mx-3 my-2 text-md font-bold">{b6.number}</p>
+                                            <img  src="./images/pballs/black.png"  alt="" className="relative" />
                                         </div>     
                                     </div>
                                      
@@ -210,7 +277,7 @@ function PBGameContainerComponent(props) {
                                 </div>
 
                                 <div className={"absolute w-full " + (isDraw ? "mt-[15rem] opacity-100 ease-in-out duration-300": "mt-[25rem] opacity-0 ease-in-out duration-300")}>
-                                     <img src="./images/BallsMachine_result.webp" className="relative" alt="" />
+                                     <img src="./images/rect_res.gif" className="relative" alt="" />
                                 </div> 
                                 
                                 
