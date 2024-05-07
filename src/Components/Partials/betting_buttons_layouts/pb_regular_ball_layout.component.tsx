@@ -46,7 +46,7 @@ function PBRegularBallComponent(props) {
                         <div className="even">
                             {blue.map(btn => 
                                 <div key={btn.id} className="bet_btn_blue p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-blue-600 border-solid border-2 border-black flex flex-row" onClick={ (e) => props.onPlaceBet(e) }>
-                                    <span className="w-full text-xs">
+                                    <span className="w-full text-xs my-auto">
                                         { btn.caption }
                                     </span>
                                     <span className="bg-blue-900 p-1 rounded-md">
@@ -61,7 +61,7 @@ function PBRegularBallComponent(props) {
                         <div className="odd">
                             {red.map(btn => 
                                 <div key={btn.id} className="bet_btn_red p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-red-600 border-solid border-2 border-black flex flex-row" onClick={ (e) => props.onPlaceBet(e) }>
-                                    <span className="w-full text-xs">
+                                    <span className="w-full text-xs my-auto">
                                         { btn.caption }
                                     </span>
                                     <span className="bg-red-900 p-1 rounded-md">
@@ -76,7 +76,7 @@ function PBRegularBallComponent(props) {
                 <div className="w-full flex flex-row gap-1">
                     {/* 3 buttons layout.. */}
                     <div key={btn_grid_1.id} className="w-full bg-green-700 p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-green-600 border-solid border-2 border-black flex flex-row text-white" onClick={ (e) => props.onPlaceBet(e) }>
-                        <span className="w-full text-xs">
+                        <span className="w-full text-xs my-auto">
                             { btn_grid_1.caption }
                         </span>
                         <span className="bg-green-900 p-1 rounded-md">
@@ -85,7 +85,7 @@ function PBRegularBallComponent(props) {
                     </div>
 
                     <div key={btn_grid_2.id} className="w-full bet_btn_blue p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-blue-600 border-solid border-2 border-black flex flex-row text-white" onClick={ (e) => props.onPlaceBet(e) }>
-                        <span className="w-full text-xs">
+                        <span className="w-full text-xs my-auto">
                             { btn_grid_2.caption }
                         </span>
                         <span className="bg-blue-900 p-1 rounded-md">
@@ -94,7 +94,7 @@ function PBRegularBallComponent(props) {
                     </div>
 
                     <div key={btn_grid_3.id} className="w-full bet_btn_red p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-red-600 border-solid border-2 border-black flex flex-row text-white" onClick={ (e) => props.onPlaceBet(e) }>
-                        <span className="w-full text-xs">
+                        <span className="w-full text-xs my-auto">
                             { btn_grid_3.caption }
                         </span>
                         <span className="bg-red-900 p-1 rounded-md">

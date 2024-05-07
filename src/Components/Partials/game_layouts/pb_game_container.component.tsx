@@ -10,6 +10,8 @@ function PBGameContainerComponent(props) {
 
     const ballDefaultStyle = 'opacity-0' 
 
+    const t_status = props.ParentTimerStatus
+
 
     const[b1, setB1] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
@@ -200,7 +202,7 @@ function PBGameContainerComponent(props) {
 
         console.log(balls.length)
         
-        if(isDraw) {
+        if(t_status == 'draw_results') {
             drawBalls()
         }
         setDefault()
@@ -215,7 +217,7 @@ function PBGameContainerComponent(props) {
                     <div className="ball-machine w-80 h-full bg-slate-900 mx-auto border-[0.3rem] border-solid border-black rounded-xl">
                         <div className="h-full relative">
                             {/* Conditional rendering  after timer stop */}
-                            <div className={"beam-loader h-full w-full absolute flex flex-row "+(isDraw ? "hidden": "")}>
+                            <div className={"beam-loader h-full w-full absolute flex flex-row "+(t_status == 'draw_results' ? "hidden": "")}>
                                 <div className="w-1/2">
                                     <img src="./images/beam_g2.gif" className="relative h-64 -ml-2 -skew-x-6 -mt-3" alt="" />
                                 </div>
@@ -276,7 +278,7 @@ function PBGameContainerComponent(props) {
                                      <img src="./images/pballs/black.png" className="relative w-12 h-12" alt="" /> */}
                                 </div>
 
-                                <div className={"absolute w-full " + (isDraw ? "mt-[15rem] opacity-100 ease-in-out duration-300": "mt-[25rem] opacity-0 ease-in-out duration-300")}>
+                                <div className={"absolute w-full " + (t_status == 'draw_results' ? "mt-[15rem] opacity-100 ease-in-out duration-300": "mt-[25rem] opacity-0 ease-in-out duration-300")}>
                                      <img src="./images/rect_res.gif" className="relative" alt="" />
                                 </div> 
                                 

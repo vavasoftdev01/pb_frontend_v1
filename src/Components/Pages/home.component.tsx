@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import PBSingleComponent from '../Partials/betting_buttons_layouts/pb_single.component'
-import PBTimer from '../Partials/pb_timer.component'
 import PBHomeHeader from '../Partials/pb_home_header.component'
 import PBRegularBallComponent from '../Partials/betting_buttons_layouts/pb_regular_ball_layout.component'
 import PBRegularBallComboComponent from '../Partials/betting_buttons_layouts/pb_regular_ball_combo_layout.component'
@@ -11,11 +10,13 @@ import PBGameContainerComponent from '../Partials/game_layouts/pb_game_container
 import PBLeaderBoardComponent from '../Partials/game_layouts/pb_leader_board.component'
 import PBGameStatsHistoryComponent from '../Partials/game_layouts/pb_game_stats_history.component'
 import PBDrawPanelComponent from '../Partials/pb_draw_popup_panel.component'
-
+import PBTimer from '../Partials/timers/pb_timer.component'
 
 function Home() {
 
     const [isBettingFormVisible, setIsBettingFormVisible] = useState(false)
+
+    const [timerStatus, setTimerStatus] = useState('open_betting')
 
     const toggleBettingForm = () => {
         setIsBettingFormVisible(!isBettingFormVisible)
@@ -26,15 +27,24 @@ function Home() {
     const handleBetting = () => {
         
         setIsBettingClose(!isBettingCLose)
-        
     }
+
+    const handleParentTimerStatusOnChange = (tStatus) => {
+        setTimerStatus(tStatus)
+    }
+
     
   return (
     <div className="flex justify-center w-full">
         <div className="flex-col w-3/5 mt-2 rounded-lg p-5">
             <PBHomeHeader />
             <div className="w-full flex flex-col bg-slate-700 rounded-t-lg">
-                <PBTimer getTimer={ handleBetting }/>
+                {/* betting open timer .. apply conditional rendering based on this timer */}
+                {timerStatus == 'open_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus} time_limit_in_seconds={ 30 }/>}
+                    
+                {timerStatus == 'closed_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 20 }/>}
+
+                {timerStatus == 'draw_results' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 10 }/>}   
             </div>
             <div className="bg-gradient-to-b from-slate-500 to-slate-100 p-2">
                 <div className="flex flex-row">
@@ -53,7 +63,7 @@ function Home() {
                             </div>
 
                             {/* TODO: Show this panel when timer stop.. */}
-                            <div className={"absolute bg-violet-300 h-[50rem] w-full ease-in-out duration-300 "+ (isBettingCLose == true ? "my-[-142%] opacity-100" : "my-[-12%] opacity-0")}>
+                            <div className={"absolute h-[50rem] w-full ease-in-out duration-300 "+ (timerStatus !== 'open_betting' ? "my-[-142%] opacity-100" : "my-[-12%] opacity-0")}>
                                 <PBDrawPanelComponent />
                             </div>          
 
@@ -61,7 +71,7 @@ function Home() {
                     </div>
 
                     <div className="w-full flex flex-col p-1 gap-2">
-                        <PBGameContainerComponent timerStatus={isBettingCLose} />
+                        <PBGameContainerComponent timerStatus={isBettingCLose} ParentTimerStatus={timerStatus}/>
                         <PBLeaderBoardComponent />
                         <PBGameStatsHistoryComponent />
                     </div>

@@ -48,7 +48,7 @@ function PBRegularBallComboComponent(props) {
                         <div className="even flex flex-row gap-2">
                             {sm_blue.map(btn => 
                                 <div key={btn.id} className="bg-[#055abb] p-1 rounded-lg hover:cursor-pointer hover:bg-blue-700 border-solid border-2 border-black flex flex-row w-full" onClick={ (e) => props.onPlaceBet(e) }>
-                                    <span className="w-full text-xs">
+                                    <span className="w-full text-xs my-auto">
                                         { btn.caption }
                                     </span>
                                     <span className="bg-blue-900 p-1 rounded-md">
@@ -63,7 +63,7 @@ function PBRegularBallComboComponent(props) {
                         <div className="odd flex flex-row gap-2">
                             {sm_red.map(btn => 
                                 <div key={btn.id} className="bg-[#aa2d37] p-1 rounded-lg hover:cursor-pointer hover:bg-red-700 border-solid border-2 border-black flex flex-row w-full" onClick={ (e) => props.onPlaceBet(e) }>
-                                    <span className="w-full text-xs">
+                                    <span className="w-full text-xs my-auto">
                                         { btn.caption }
                                     </span>
                                     <span className="bg-red-900 p-1 rounded-md">
@@ -80,7 +80,7 @@ function PBRegularBallComboComponent(props) {
                         <div className="even">
                             {md_blue.map(btn => 
                                 <div key={btn.id} className="bet_btn_blue p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-blue-600 border-solid border-2 border-black flex flex-row" onClick={ (e) => props.onPlaceBet(e) }>
-                                <span className="w-full text-xs">
+                                <span className="w-full text-xs my-auto">
                                     { btn.caption }
                                 </span>
                                 <span className="bg-blue-900 p-1 rounded-md">
@@ -96,7 +96,7 @@ function PBRegularBallComboComponent(props) {
                         <div className="odd">
                             {md_red.map(btn => 
                                 <div key={btn.id} className="bet_btn_red p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-red-600 border-solid border-2 border-black flex flex-row" onClick={ (e) => props.onPlaceBet(e) }>
-                                <span className="w-full text-xs">
+                                <span className="w-full text-xs my-auto">
                                     { btn.caption }
                                 </span>
                                 <span className="bg-red-900 p-1 rounded-md">
