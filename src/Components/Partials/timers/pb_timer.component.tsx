@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 function PBTimer (props) {
     const time_limit = props.time_limit_in_seconds
  
-    const [timer, setTimer] = useState(time_limit) // Init 1 min..
+    const [timer, setTimer] = useState(time_limit)
 
     const [progressBar, setProgressBar] = useState(100)
 
@@ -17,14 +17,9 @@ function PBTimer (props) {
 
 
     const timerStart = () => {
-
-        const progress = ((total_time.current - timer) / total_time.current) * 100
-
-        console.log(timer)
-
+        const progress = 100 - ((total_time.current - timer) / total_time.current) * 100
         setTimer((prevTimer) => prevTimer - 1)
-        setProgressBar(progress)
-
+        setProgressBar((prevProgressBar) => prevProgressBar = progress)
         setLoaderColor() 
     }
 
@@ -43,30 +38,28 @@ function PBTimer (props) {
             break;
         
             default:
-                setProgressColors('bg-green-600')
-                
+                setProgressColors('bg-green-600')  
             break;
         }
     }
 
     const setOpenBettingLoaderColor = () => {
-        if(progressBar > 0) {
-            setProgressColors('bg-green-600')
+        if(progressBar >= 5) {
+            setProgressColors('bg-red-600')
         }
 
-        if(progressBar > 55) {
+        if(progressBar >= 25) {
             setProgressColors('bg-orange-600')
         }
 
 
-        if(progressBar > 85) {
-            setProgressColors('bg-red-600')
+        if(progressBar >= 50) {
+            setProgressColors('bg-green-600')
         }   
     }
 
 
     const timerStop = () => {
-        // props.getTimer()
         setTimer(total_time.current)
         setProgressBar(100)
         handleStatusOnChange()
@@ -89,15 +82,15 @@ function PBTimer (props) {
         }
     }
 
-    const padZero = (n) => {
-        return (n < 10 ? "0": "") + n
+    const formattedTime = () => {
+        return new Date(timer * 1000).toISOString().substring(14, 19)
     }
 
     useEffect(() => {
 
         let exec = setTimeout(() => {
             timerStart()
-        }, 1000);
+        }, 900);
         
         if(timer < 0) {
             clearTimeout(exec)
@@ -110,8 +103,8 @@ function PBTimer (props) {
         <>
             <div className="relative mb-6 w-full">
                 <div className="w-full rounded-t-lg">
-                    <span className={"flex absolute "+ progressColors } style={{ width: progressBar+'%', transition: '0.2s', transitionTimingFunction: 'ease-in'}}>&nbsp;</span>
-                    <span className="absolute bottom-0 left-0 right-0 top-1 grid place-items-center text-white text-xs">{ timerMessage } - 00:{ padZero(timer) } </span>
+                    <span className={"flex absolute "+ progressColors } style={{ width: progressBar+'%', transition: '0.4s', transitionTimingFunction: 'ease-in'}}>&nbsp;</span>
+                    <span className="absolute bottom-0 left-0 right-0 top-1 grid place-items-center text-white text-xs">{ timerMessage } - { formattedTime() } </span>
                 </div>
                 
             </div>
