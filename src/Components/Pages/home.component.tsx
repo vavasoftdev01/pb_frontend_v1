@@ -40,11 +40,11 @@ function Home() {
             <PBHomeHeader />
             <div className="w-full flex flex-col bg-slate-700 rounded-t-lg">
                 {/* TODO: move time_limit_in_seconds to .env */}
-                {timerStatus == 'open_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus} time_limit_in_seconds={ 90 }/>}
+                {timerStatus == 'open_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus} time_limit_in_seconds={ 10 }/>}
                     
                 {timerStatus == 'closed_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 10 }/>}
 
-                {timerStatus == 'draw_results' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 20 }/>}   
+                {timerStatus == 'draw_results' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 10 }/>}   
             </div>
             <div className="bg-gradient-to-b from-slate-500 to-slate-100 p-2">
                 <div className="flex flex-row">
@@ -63,7 +63,7 @@ function Home() {
                             </div>
 
                             {/* TODO: Show this panel when timer stop.. */}
-                            <div className={"absolute h-[50rem] w-full ease-in-out duration-300 "+ (timerStatus !== 'open_betting' ? "my-[-142%] opacity-100" : "my-[-12%] opacity-0")}>
+                            <div className={"absolute h-full w-full ease-in-out duration-300 "+ (timerStatus !== 'open_betting' ? "my-[-146%] opacity-100" : "my-[-12%] opacity-0")}>
                                 <PBDrawPanelComponent />
                             </div>          
 

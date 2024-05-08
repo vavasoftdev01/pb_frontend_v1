@@ -29,6 +29,7 @@ function PBDrawPopupPanelComponent(props) {
                                 <div className="bg-green-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">32</div>
                                 <div className="bg-blue-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">69</div>
                                 <div className="bg-yellow-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">45</div>
+                                <div className="bg-green-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">6</div>
                                 <div className="bg-slate-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">55</div>
                             </div>
                             <div className="w-full">
@@ -75,6 +76,7 @@ function PBDrawPopupPanelComponent(props) {
                                 <div className="bg-green-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">33</div>
                                 <div className="bg-blue-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">26</div>
                                 <div className="bg-yellow-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">45</div>
+                                <div className="bg-red-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">5</div>
                                 <div className="bg-slate-600 rounded-full w-4 h-4 text-[0.6rem] mx-0.5  text-center text-white ">69</div>
                             </div>
                             <div className="w-full">

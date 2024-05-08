@@ -15,7 +15,7 @@ function PBSingleComponent(props) {
             {/* button group #1 - start - TODO: refactor prop/ref based values*/}
             <div className="bg-[#FCE6D2] flex flex-col p-1 mb-1 rounded-md border-solid border-2 border-b-4 border-black shadow-md">
                 <div className="m-1 -pb-1 -mt-1 w-full -ml-1 mr-4 -pt-1 border-solid border-b-2 border-black text-xs flex flex-row">
-                    <p className="ml-2 w-24">
+                    <p className="ml-2">
                     { data.title }
                     </p>
 
@@ -28,12 +28,7 @@ function PBSingleComponent(props) {
                                 </div>
                                 
                             ))
-                        }
-                        {/* <div className="bg-yellow-500 w-3 h-3 rounded-full self-center ml-1 border-solid border-[0.1rem] border-black">&nbsp;</div>
-                        <div className="bg-red-500 w-3 h-3 rounded-full self-center ml-1 border-solid border-[0.1rem] border-black">&nbsp;</div>
-                        <div className="bg-blue-500 w-3 h-3 rounded-full self-center ml-1 border-solid border-[0.1rem] border-black">&nbsp;</div>
-                        <div className="bg-green-500 w-3 h-3 rounded-full self-center ml-1 border-solid border-[0.1rem] border-black">&nbsp;</div>
-                        <div className="bg-slate-800 w-3 h-3 rounded-full self-center ml-1 border-solid border-[0.1rem] border-black">&nbsp;</div> */}
+                        }    
                     </div>
                 </div>
                 <div className="flex flex-row gap-2 text-white">
@@ -41,7 +36,7 @@ function PBSingleComponent(props) {
                         <div className="even">
                             {
                                 blue.map(btn => 
-                                    <div key={btn.id} className="bet_btn_blue p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-blue-600 border-solid border-2 border-black flex flex-row" onClick={ (e) => props.onPlaceBet(e) }>
+                                    <div key={btn.id} className="bet_btn_blue p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-blue-600 border-solid border-2 border-b-4 border-black flex flex-row" onClick={ (e) => props.onPlaceBet(e) }>
                                         <span className="w-full text-xs my-auto">
                                             { btn.caption }
                                         </span>
@@ -56,7 +51,7 @@ function PBSingleComponent(props) {
                     <div className="w-full flex-col">
                         <div className="odd">
                             {red.map(btn => 
-                                <div key={btn.id} className="bet_btn_red p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-red-600 border-solid border-2 border-black flex flex-row" onClick={ (e) => props.onPlaceBet(e) }>
+                                <div key={btn.id} className="bet_btn_red p-1 mb-1 rounded-lg hover:cursor-pointer hover:bg-red-600 border-solid border-2 border-b-4 border-black flex flex-row" onClick={ (e) => props.onPlaceBet(e) }>
                                     <span className="w-full text-xs my-auto">
                                         { btn.caption }
                                     </span>

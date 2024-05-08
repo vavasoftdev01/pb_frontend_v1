@@ -86,21 +86,6 @@ function PBGameContainerComponent(props) {
     ])
 
     const drawBalls = () => {
-        // TODO..
-        const newBalls = balls.map((ball) => {
-            return { ...ball, style: ballTransition, number: Math.floor(Math.random() * 99) + 1 }
-        })
-
-       setTimeout(() => {
-            for (let b = 0; b < balls.length; b++) {
-                setTimeout(() => {
-                    setBalls((prevBalls) => newBalls)
-                },2000)
-            }
-       },3000)
-        setBalls((prevBalls) => newBalls)
-        
-
         setTimeout(() => {
             setB1({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
