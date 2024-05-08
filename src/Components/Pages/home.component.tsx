@@ -39,12 +39,12 @@ function Home() {
         <div className="flex-col w-3/5 mt-2 rounded-lg p-5">
             <PBHomeHeader />
             <div className="w-full flex flex-col bg-slate-700 rounded-t-lg">
-                {/* betting open timer .. apply conditional rendering based on this timer */}
-                {timerStatus == 'open_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus} time_limit_in_seconds={ 180 }/>}
+                {/* TODO: move time_limit_in_seconds to .env */}
+                {timerStatus == 'open_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus} time_limit_in_seconds={ 90 }/>}
                     
-                {timerStatus == 'closed_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 70 }/>}
+                {timerStatus == 'closed_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 10 }/>}
 
-                {timerStatus == 'draw_results' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 15 }/>}   
+                {timerStatus == 'draw_results' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 20 }/>}   
             </div>
             <div className="bg-gradient-to-b from-slate-500 to-slate-100 p-2">
                 <div className="flex flex-row">

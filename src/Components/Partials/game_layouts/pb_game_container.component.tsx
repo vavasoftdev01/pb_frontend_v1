@@ -12,40 +12,36 @@ function PBGameContainerComponent(props) {
 
     const t_status = props.ParentTimerStatus
 
+    const [results, setResults] = useState([])
+
 
     const[b1, setB1] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
-        number: 0,
         style: ballDefaultStyle
     })
 
     const[b2, setB2] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
-        number: 0,
         style: ballDefaultStyle
     })
 
     const[b3, setB3] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
-        number: 0,
         style: ballDefaultStyle
     })
 
     const[b4, setB4] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
-        number: 0,
         style: ballDefaultStyle
     })
 
     const[b5, setB5] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],
-        number: 0,
         style: ballDefaultStyle
     })
 
     const[b6, setB6] = useState({
         color: './images/pballs/black.png',
-        number: 0,
         style: ballDefaultStyle
     })
 
@@ -53,37 +49,37 @@ function PBGameContainerComponent(props) {
         {
             id: 'ball_1',
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         },
         {
             id: 'ball_2',
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         },
         {
             id: 'ball_3',
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         },
         {
             id: 'ball_4',
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         },
         {
             id: 'ball_5',
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         },
         {
             id: 'ball_6',
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         }
         
@@ -108,7 +104,6 @@ function PBGameContainerComponent(props) {
         setTimeout(() => {
             setB1({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 99) + 1,
                 style: ballTransition
             })
         }, 1000)
@@ -116,7 +111,6 @@ function PBGameContainerComponent(props) {
         setTimeout(() => {
             setB2({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 99) + 1,
                 style: ballTransition
             })
         }, 2000)
@@ -124,7 +118,6 @@ function PBGameContainerComponent(props) {
         setTimeout(() => {
             setB3({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 99) + 1,
                 style: ballTransition
             })
         }, 3000)
@@ -132,7 +125,6 @@ function PBGameContainerComponent(props) {
         setTimeout(() => {
             setB4({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 99) + 1,
                 style: ballTransition
             })
         }, 4000)
@@ -140,7 +132,6 @@ function PBGameContainerComponent(props) {
         setTimeout(() => {
             setB5({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 99) + 1,
                 style: ballTransition
             })
         }, 5000)
@@ -148,61 +139,75 @@ function PBGameContainerComponent(props) {
         setTimeout(() => {
             setB6({
                 color: ballColors[Math.floor(Math.random() * ballColors.length)],
-                number: Math.floor(Math.random() * 99) + 1,
                 style: ballTransition
             })
-        }, 6000)
-
-        console.log(b1.color)
-       
+        }, 6000)   
     }
 
     const setDefault = () => {
         
         setB1({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         })
 
         setB2({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         })
 
         setB3({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         })
 
         setB4({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         })
 
 
         setB5({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         })
 
         setB6({
             color: ballColors[Math.floor(Math.random() * ballColors.length)],
-            number: 0,
+
             style: ballDefaultStyle
         })
- 
+
+    }
+
+    const randomNumberGenerator = () => {
+       let temp_ball_cont : number[] = []
+        
+       for (let t = 0; t < 6; t++) {
+            temp_ball_cont.push(Math.floor(Math.random() * 94) + t)
+
+            for (let v = 0; v < temp_ball_cont.length; v++) {
+                if(temp_ball_cont.includes(temp_ball_cont[v])) {
+                    temp_ball_cont.pop()
+                    temp_ball_cont.push(Math.floor(Math.random() * 94) + v)
+                }
+            }
+       }
+       setResults(temp_ball_cont)
     }
 
     useEffect(() => {
-
-        console.log(balls.length)
+        if(t_status == 'closed_betting' || t_status == 'draw_results') {
+            randomNumberGenerator()
+        }
         
         if(t_status == 'draw_results') {
+            
             drawBalls()
         }
         setDefault()
@@ -231,42 +236,42 @@ function PBGameContainerComponent(props) {
                                 <div className={"absolute w-full mt-[3rem] inline-flex space-x-1"}>
                                     <div className="bcont1">
                                         <div className={"relative w-11 h-11 ml-1 z-10 "+ b1.style}>
-                                            <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b1.number}</p>
+                                            <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[0] }</p>
                                             <img  src={b1.color} className={"relative w-11 h-11 ml-1 z-10 "+ b1.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
                                         <div className={"relative w-11 h-11 ml-1 z-10 "+ b2.style}>
-                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b2.number}</p>
+                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[1] }</p>
                                             <img  src={b2.color} className={"relative w-11 h-11 ml-1 z-10 "+ b2.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
                                         <div className={"relative w-11 h-11 ml-1 z-10 "+ b3.style}>
-                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b3.number}</p>
+                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[2] }</p>
                                             <img  src={b3.color} className={"relative w-11 h-11 ml-1 z-10 "+ b3.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
                                         <div className={"relative w-11 h-11 ml-1 z-10 "+ b4.style}>
-                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b4.number}</p>
+                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[3] }</p>
                                             <img  src={b4.color} className={"relative w-11 h-11 ml-1 z-10 "+ b4.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
                                         <div className={"relative w-11 h-11 ml-1 z-10 "+ b5.style}>
-                                            <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{b5.number}</p>
+                                            <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[4] }</p>
                                             <img  src={b5.color} className={"relative w-11 h-11 ml-1 z-10 "+ b5.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
                                         <div className={"relative w-11 h-11 ml-1 z-10 "+ b6.style}>
-                                            <p className="text-white absolute z-20 mx-3 my-2 text-md font-bold">{b6.number}</p>
+                                            <p className="text-white absolute z-20 mx-3 my-2 text-md font-bold">{ results[5] }</p>
                                             <img  src="./images/pballs/black.png"  alt="" className="relative" />
                                         </div>     
                                     </div>
