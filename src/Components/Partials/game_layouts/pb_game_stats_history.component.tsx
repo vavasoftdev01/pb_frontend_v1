@@ -1,10 +1,13 @@
 import React from "react";
 
-function PBGameStatsHistoryComponent() {
+function PBGameStatsHistoryComponent(props) {
+    const toggleHomeComponentHistory = props.toggleBettingHistoryForm
+    const toggleHomeComponentStat = props.toggleResultStatsPanel
+    
     return(
         <>
             <div className="flex flex-col w-full">
-                <div className="bg-[#F9D8A0] border-solid border-black border-2 rounded-lg p-2 mt-2 cursor-pointer inline-flex justify-center hover:bg-[#fce1b2]">
+                <div className="bg-[#F9D8A0] border-solid border-black border-2 rounded-lg p-2 mt-2 cursor-pointer inline-flex justify-center hover:bg-[#fce1b2]" onClick={ (e) => toggleHomeComponentStat(e)}>
                     <span className="mx-2">
                         <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.99988 0C6.17145 0 5.49988 0.67163 5.49988 1.5L5.49988 18.5C5.49988 19.3284 6.17145 20 6.99988 20C7.82831 20 8.49988 19.3284 8.49988 18.5L8.49988 1.5C8.49988 0.67163 7.82831 0 6.99988 0Z"
@@ -19,7 +22,7 @@ function PBGameStatsHistoryComponent() {
                         통계
                     </span>  
                 </div>
-                <div className="bg-[#F9D8A0] border-solid border-black border-2 rounded-lg p-2 mt-2 cursor-pointer inline-flex justify-center hover:bg-[#fce1b2]">
+                <div className="bg-[#F9D8A0] border-solid border-black border-2 rounded-lg p-2 mt-2 cursor-pointer inline-flex justify-center hover:bg-[#fce1b2]" onClick={ (e) => toggleHomeComponentHistory(e)}>
                     <span className="mx-2">
                         <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.0695 12.4364C16.719 13.5386 16.1418 14.5395 15.386 15.3769C15.2429 15.5354 15.242 15.7734 15.3926 15.9248L16.2404 16.7773C16.3999 16.9377 16.6658 16.9381 16.8184 16.7711C17.7977 15.6995 18.5409 14.4095 18.9825 12.9852C19.0496 12.7687 18.9166 12.5369 18.6988 12.4782L17.5447 12.1673C17.3391 12.1119 17.1343 12.2325 17.0695 12.4364Z"

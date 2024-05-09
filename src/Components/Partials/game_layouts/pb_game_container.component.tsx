@@ -6,7 +6,7 @@ function PBGameContainerComponent(props) {
 
     const ballColors = ['./images/pballs/red.png', './images/pballs/green.png', './images/pballs/blue.png', './images/pballs/yellow.png']
 
-    const ballTransition = 'mt-[12.5rem] ease-in-out duration-300 opacity-100'
+    const ballTransition = 'mt-[12.5rem] ease-in-out duration-100 opacity-100'
 
     const ballDefaultStyle = 'opacity-0' 
 
@@ -186,6 +186,10 @@ function PBGameContainerComponent(props) {
        setResults(temp_ball_cont)
     }
 
+    const padZero = (number) => {
+
+    }
+
     useEffect(() => {
         if(t_status == 'closed_betting' || t_status == 'draw_results') {
             randomNumberGenerator()
@@ -220,46 +224,47 @@ function PBGameContainerComponent(props) {
                             <div className="draw-results-container w-full h-full relative">
                                 <div className={"absolute w-full mt-[3rem] inline-flex space-x-1"}>
                                     <div className="bcont1">
-                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b1.style}>
-                                            <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[0] }</p>
-                                            <img  src={b1.color} className={"relative w-11 h-11 ml-1 z-10 "+ b1.style} alt="" />
+                                        <div className={"relative w-11 h-11 ml-1 z-[1] "+ b1.style}>
+                                            <p className="text-white absolute z-[3] mx-4 my-2 text-md font-bold">{ results[0] }</p>
+                                            <img  src={b1.color} className={"relative w-11 h-11 ml-1 z-[2] "+ b1.style} alt="" />
+                                        </div>     
+                                    </div>
+                                    
+                                    <div className="bcont1">
+                                        <div className={"relative w-11 h-11 ml-1 z-[1] "+ b2.style}>
+                                            <p className="text-white absolute z-[3] mx-4 my-2 text-md font-bold">{ results[1] }</p>
+                                            <img  src={b2.color} className={"relative w-11 h-11 ml-1 z-[2] "+ b2.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
-                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b2.style}>
-                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[1] }</p>
-                                            <img  src={b2.color} className={"relative w-11 h-11 ml-1 z-10 "+ b2.style} alt="" />
+                                        <div className={"relative w-11 h-11 ml-1 z-[1] "+ b3.style}>
+                                            <p className="text-white absolute z-[3] mx-4 my-2 text-md font-bold">{ results[2] }</p>
+                                            <img  src={b3.color} className={"relative w-11 h-11 ml-1 z-[2] "+ b3.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
-                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b3.style}>
-                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[2] }</p>
-                                            <img  src={b3.color} className={"relative w-11 h-11 ml-1 z-10 "+ b3.style} alt="" />
+                                        <div className={"relative w-11 h-11 ml-1 z-[1] "+ b4.style}>
+                                            <p className="text-white absolute z-[3] mx-4 my-2 text-md font-bold">{ results[3] }</p>
+                                            <img  src={b4.color} className={"relative w-11 h-11 ml-1 z-[2] "+ b4.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
-                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b4.style}>
-                                        <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[3] }</p>
-                                            <img  src={b4.color} className={"relative w-11 h-11 ml-1 z-10 "+ b4.style} alt="" />
+                                        <div className={"relative w-11 h-11 ml-1 z-[1] "+ b5.style}>
+                                            <p className="text-white absolute z-[3] mx-4 my-2 text-md font-bold">{ results[4] }</p>
+                                            <img  src={b5.color} className={"relative w-11 h-11 ml-1 z-[2] "+ b5.style} alt="" />
                                         </div>     
                                     </div>
 
                                     <div className="bcont1">
-                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b5.style}>
-                                            <p className="text-white absolute z-20 mx-4 my-2 text-md font-bold">{ results[4] }</p>
-                                            <img  src={b5.color} className={"relative w-11 h-11 ml-1 z-10 "+ b5.style} alt="" />
+                                        <div className={"relative w-11 h-11 ml-1 z-[1] "+ b6.style}>
+                                            <p className="text-white absolute z-[3] mx-4 my-2 text-md font-bold">{ results[5] }</p>
+                                            <img  src="./images/pballs/black.png" className={"relative w-11 h-11 ml-1 z-[2] "+ b6.style} alt="" />
                                         </div>     
                                     </div>
-
-                                    <div className="bcont1">
-                                        <div className={"relative w-11 h-11 ml-1 z-10 "+ b6.style}>
-                                            <p className="text-white absolute z-20 mx-3 my-2 text-md font-bold">{ results[5] }</p>
-                                            <img  src="./images/pballs/black.png"  alt="" className="relative" />
-                                        </div>     
-                                    </div>
+                                   
                                      
                                      {/* <img src="./images/pballs/blue.png" className="relative w-12 h-12" alt="" />
                                      <img src="./images/pballs/yellow.png" className="relative w-12 h-12" alt="" />
@@ -269,7 +274,7 @@ function PBGameContainerComponent(props) {
                                 </div>
 
                                 <div className={"absolute w-full " + (t_status == 'draw_results' ? "mt-[15rem] opacity-100 ease-in-out duration-300": "mt-[25rem] opacity-0 ease-in-out duration-300")}>
-                                     <img src="./images/rect_res.gif" className="relative" alt="" />
+                                     <img src="./images/rect_res.gif" className="relative " alt="" />
                                 </div> 
                                 
                                 

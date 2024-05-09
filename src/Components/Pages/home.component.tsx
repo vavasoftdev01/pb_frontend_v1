@@ -11,22 +11,33 @@ import PBLeaderBoardComponent from '../Partials/game_layouts/pb_leader_board.com
 import PBGameStatsHistoryComponent from '../Partials/game_layouts/pb_game_stats_history.component'
 import PBDrawPanelComponent from '../Partials/pb_draw_popup_panel.component'
 import PBTimer from '../Partials/timers/pb_timer.component'
+import PBStatsPanelComponent from '../Partials/pb_stats_panel.component'
 
 function Home() {
-
     const [isBettingFormVisible, setIsBettingFormVisible] = useState(false)
-
     const [timerStatus, setTimerStatus] = useState('open_betting')
+    const [isMyBettingPanelVisible, setIsMyBettingPanelVisible] = useState(false)
+    const [isStatPanelVisible, setIsStatPanelVisible] = useState(false)
+    const [isBettingCLose, setIsBettingClose] = useState(false)
 
     const toggleBettingForm = () => {
         setIsBettingFormVisible(!isBettingFormVisible)
     }
 
-    const [isBettingCLose, setIsBettingClose] = useState(false)
-
     const handleBetting = () => {
         
         setIsBettingClose(!isBettingCLose)
+    }
+
+    const toggleBettingHistoryPanel = () => {
+        setIsStatPanelVisible(false)
+        setIsMyBettingPanelVisible(!isMyBettingPanelVisible)
+    }
+
+    const toggleStatsPanel = () => {
+        setIsStatPanelVisible(!isStatPanelVisible)
+        setIsMyBettingPanelVisible(false)
+        console.log(isStatPanelVisible)
     }
 
     const handleParentTimerStatusOnChange = (tStatus) => {
@@ -35,49 +46,60 @@ function Home() {
 
     
   return (
-    <div className="flex justify-center w-full">
-        <div className="flex-col w-3/5 mt-2 rounded-lg p-5">
-            <PBHomeHeader />
-            <div className="w-full flex flex-col bg-slate-700 rounded-t-lg">
-                {/* TODO: move time_limit_in_seconds to .env */}
-                {timerStatus == 'open_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus} time_limit_in_seconds={ 10 }/>}
-                    
-                {timerStatus == 'closed_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 10 }/>}
+    <div className="w-[100rem] mx-auto static h-[100%]">
+        <div className="flex justify-center h-full w-2/3 mx-auto">
+            
+            <div className="flex justify-center flex-col w-full rounded-lg">
+                <PBHomeHeader />
+                <div className="w-full flex flex-col bg-slate-700 rounded-t-lg">
+                    {/* TODO: move time_limit_in_seconds to .env */}
+                    {timerStatus == 'open_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus} time_limit_in_seconds={ 10 }/>}
+                        
+                    {timerStatus == 'closed_betting' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 10 }/>}
 
-                {timerStatus == 'draw_results' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 10 }/>}   
-            </div>
-            <div className="bg-gradient-to-b from-slate-500 to-slate-100 p-2">
-                <div className="flex flex-row">
-                    <div className="w-[80rem] flex flex-col p-2 flex-wrap">
-                        <div className="dynamic-panel relative">
-                            <div className={(isBettingFormVisible == true || isBettingCLose == true ? 'blur-sm pointer-events-none': '') }>
-                                <PBSingleComponent config={ BConfig.pbSingle_195 } onPlaceBet={ toggleBettingForm } />
-                                <PBSingleComponent config={ BConfig.pbSingle_3_450 } onPlaceBet={ toggleBettingForm } />
-                                <PBSingleComponent config={ BConfig.pbSingle_320 } onPlaceBet={ toggleBettingForm } />
-                                <PBRegularBallComponent config= { BConfig.regularBall } onPlaceBet={ toggleBettingForm } />
-                                <PBRegularBallComboComponent config = { BConfig.regularBallCombo } onPlaceBet={ toggleBettingForm } />
-                            </div>
-                            
-                            <div className={"absolute ease-in-out duration-300 "+ (isBettingFormVisible == true ? "my-[-22rem] opacity-100": "my-[-3rem] opacity-0")}>
-                                <PBBettingFormComponent onPlaceBet={ toggleBettingForm } />
-                            </div>
+                    {timerStatus == 'draw_results' && <PBTimer handleChildTimerStatusChange={ handleParentTimerStatusOnChange } ParentTimerStatus={timerStatus}  time_limit_in_seconds={ 400 }/>}   
+                </div>
+                <div className="bg-gradient-to-b from-slate-500 to-slate-100 p-2">
+                    <div className="flex flex-row">
+                        <div className="w-[80rem] flex flex-col p-2 flex-wrap">
+                            <div className="dynamic-panel relative">
+                                <div className={(isBettingFormVisible == true || isBettingCLose == true ? 'blur-sm pointer-events-none': '') }>
+                                    <PBSingleComponent config={ BConfig.pbSingle_195 } onPlaceBet={ toggleBettingForm } />
+                                    <PBSingleComponent config={ BConfig.pbSingle_3_450 } onPlaceBet={ toggleBettingForm } />
+                                    <PBSingleComponent config={ BConfig.pbSingle_320 } onPlaceBet={ toggleBettingForm } />
+                                    <PBRegularBallComponent config= { BConfig.regularBall } onPlaceBet={ toggleBettingForm } />
+                                    <PBRegularBallComboComponent config = { BConfig.regularBallCombo } onPlaceBet={ toggleBettingForm } />
+                                </div>
+                                
+                                <div className={"absolute ease-in-out duration-300 "+ (isBettingFormVisible == true ? "my-[-22rem] opacity-100": "my-[-3rem] opacity-0")}>
+                                    <PBBettingFormComponent onPlaceBet={ toggleBettingForm } />
+                                </div>
 
-                            {/* TODO: Show this panel when timer stop.. */}
-                            <div className={"absolute h-full w-full ease-in-out duration-300 "+ (timerStatus !== 'open_betting' ? "my-[-146%] opacity-100" : "my-[-12%] opacity-0")}>
-                                <PBDrawPanelComponent />
-                            </div>          
+                                {/* TODO: Show this panel when timer stop.. */}
+                                <div className={"absolute h-full w-full ease-in-out duration-300 "+ (timerStatus !== 'open_betting' ? "my-[-149%] opacity-100" : "my-[-12%] opacity-0")}>
+                                    <PBDrawPanelComponent />
+                                </div> 
+                            </div> 
+                        </div>
 
-                        </div> 
-                    </div>
-
-                    <div className="w-full flex flex-col p-1 gap-2">
-                        <PBGameContainerComponent timerStatus={isBettingCLose} ParentTimerStatus={timerStatus}/>
-                        <PBLeaderBoardComponent />
-                        <PBGameStatsHistoryComponent />
+                        <div className="w-full flex flex-col p-1 gap-2">
+                            <PBGameContainerComponent timerStatus={isBettingCLose} ParentTimerStatus={timerStatus}/>
+                            <PBLeaderBoardComponent />
+                            <PBGameStatsHistoryComponent toggleBettingHistoryForm={toggleBettingHistoryPanel} toggleResultStatsPanel={toggleStatsPanel}/>
+                        </div>
                     </div>
                 </div>
+                <PBHomeFooterComponent />
             </div>
-            <PBHomeFooterComponent />
+            <div className={"history-stats-cont absolute w-[67rem] h-full "+(isMyBettingPanelVisible ||  isStatPanelVisible ? " transition delay-75 duration-75 ease-linear opacity-100": "-mr-[300rem] transition delay-75 duration-75 ease-linear opacity-0 ")}>
+            
+                <div className="{z-[20] h-full absolute}">
+                    {isMyBettingPanelVisible && <PBDrawPanelComponent toggleMyBetHistoryPanel={toggleBettingHistoryPanel}/>}
+
+                    {isStatPanelVisible && <PBStatsPanelComponent toggleStatsPanelChild={toggleStatsPanel}/>}
+                </div>
+                
+            </div>
         </div>
     </div>
   )
