@@ -14,6 +14,8 @@ function PBGameContainerComponent(props) {
 
     const [results, setResults] = useState([])
 
+    /** TODO: Refactor state to ref to avoid constant rerendering */
+
 
     const[b1, setB1] = useState({
         color: ballColors[Math.floor(Math.random() * ballColors.length)],

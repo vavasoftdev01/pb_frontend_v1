@@ -22,12 +22,14 @@ function PBStatsPanelComponent(props) {
                 {/* Content goes here... */}
                 <div className="inline-flex">
                     <select className="w-full border-2 border-solid border-amber-600 rounded-md p-2 mt-2 mx-1">
-                        <option className="p-2 hover:bg-transparent">test</option>
-                        <option className="p-2 hover:bg-transparent">test</option>
+                        <option className="p-2 border-amber-600 ">파워볼</option>
+                        <option className="p-2 border-amber-600 ">일별분석</option>
                     </select>
                     <select className="w-full border-2 border-solid border-amber-600 rounded-md p-2 mt-2 mx-1">
-                        <option className="p-2 hover:bg-transparent">test</option>
-                        <option className="p-2 hover:bg-transparent">test</option>
+                        <option className="p-2 ">파워볼 홀/짝</option>
+                        <option className="p-2 ">파워볼 언더/오버</option>
+                        <option className="p-2 ">일반볼 홀/짝</option>
+                        <option className="p-2 ">일반볼 언더/오버</option>
                     </select>
                 </div>
 
