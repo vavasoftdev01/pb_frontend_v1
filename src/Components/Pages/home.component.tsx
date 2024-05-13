@@ -9,9 +9,9 @@ import PBBettingFormComponent from '../Partials/pb_betting_form.component'
 import PBGameContainerComponent from '../Partials/game_layouts/pb_game_container.component'
 import PBLeaderBoardComponent from '../Partials/game_layouts/pb_leader_board.component'
 import PBGameStatsHistoryComponent from '../Partials/game_layouts/pb_game_stats_history.component'
-import PBDrawPanelComponent from '../Partials/pb_draw_popup_panel.component'
+import PBDrawPanelComponent from '../Pages/pb_draw_popup_panel.component'
 import PBTimer from '../Partials/timers/pb_timer.component'
-import PBStatsPanelComponent from '../Partials/pb_stats_panel.component'
+import PBStatsPanelComponent from '../Pages/pb_stats_panel.component'
 
 function Home() {
     const [isBettingFormVisible, setIsBettingFormVisible] = useState(false)
