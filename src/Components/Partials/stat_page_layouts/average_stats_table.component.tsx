@@ -1,15 +1,8 @@
-import React from "react";
+    import React from "react";
 
 function AverageStatsTableComponent(props) {
 
-    const average_daily_data = props.data
-
-    console.log(average_daily_data)
-
-    // const rendered = average_daily_data.map(data => 
-    //     <li>{data}</li>
-    // )
-
+    const average_daily_data = props.stats.data
 
 
     return(
@@ -18,7 +11,7 @@ function AverageStatsTableComponent(props) {
                 <div className="flex flex-row">
                     <div className="flex flex-col w-full">
                         <div className="w-full inline-flex">
-                            <div>
+                            <div className="">
                                 <span className="circle bg-blue-800 px-[0.4rem] py-[0.3rem] rounded-full text-xs text-white">홀</span>
                             </div>
                             <div className="ml-3 flex flex-col">
@@ -69,11 +62,7 @@ function AverageStatsTableComponent(props) {
                 </div>
                 <div className="h-[50%]">
                     <div className="bg-slate-100">
-
                         {/* API Data here.. for horizontal table */}
-                        <ul>
-                            
-                        </ul>
                         <table className="table table-auto border border-solid border-gray-500 text-center tracking-tight">
                             <thead>
                                 <tr className="text-[0.5rem] font-bold">
@@ -81,17 +70,45 @@ function AverageStatsTableComponent(props) {
                                     <td className="border border-solid border-gray-500 p-1 text-blue-500 h-[0.4rem] w-[2rem]">홀수</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr className="text-[0.7rem] tracking-tight">
-                                    <td className="border border-solid border-gray-500 h-[2rem]">
-                                        <span className="circle bg-red-700 px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white">1455</span>
-                                        
-                                    </td>
-                                    <td className="border border-solid border-gray-500 h-2">
-                                        <span className="circle bg-blue-700 px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white">1445</span>
-                                    </td>
-                                </tr>
-                            </tbody>
+                           {/* Row */}
+                            <tr className="text-[0.7rem] tracking-tight">
+                                <td className="border border-solid border-gray-500 p-2">
+                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
+                                        1449
+                                    </span>
+                                </td>
+                                <td className="border border-solid border-gray-500 p-2">
+                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
+                                        1449
+                                    </span>
+                                </td>
+                            </tr>
+                            {/* Row */}
+                            <tr className="text-[0.7rem] tracking-tight">
+                                <td className="border border-solid border-gray-500 p-2">
+                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
+                                        1449
+                                    </span>
+                                </td>
+                                <td className="border border-solid border-gray-500 p-2">
+                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
+                                        1449
+                                    </span>
+                                </td>
+                            </tr>
+                            {/* Row */}
+                            <tr className="text-[0.7rem] tracking-tight">
+                                <td className="border border-solid border-gray-500 p-2">
+                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
+                                        1441
+                                    </span>
+                                </td>
+                                <td className="border border-solid border-gray-500 p-2">
+                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
+                                        1441
+                                    </span>
+                                </td>
+                            </tr> 
                         </table>
                     </div>
                 </div>

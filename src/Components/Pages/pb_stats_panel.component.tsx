@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import StatsData from './../../PB_config/stats_sample_data.json'
 import AverageStatsTableComponent from "../Partials/stat_page_layouts/average_stats_table.component";
+import StatsBySelectionComponent from "../Partials/stat_page_layouts/stats_by_selection.component";
 
 function PBStatsPanelComponent(props) {
     const [pbFilter, setPbFilter] = useState('powerball_form') // pb_form & daily_analysis_form
@@ -13,7 +14,6 @@ function PBStatsPanelComponent(props) {
         if(e.target.value == 'powerball_form') {
             setDateFilterFormVisible(false)
         }
-        console.log(pbFilter) 
     }
 
     return(
@@ -82,32 +82,32 @@ function PBStatsPanelComponent(props) {
                                         </p>
                                     </button>
                                     {/* Day Filters */}
-                                    <button className=" bg-[#c5cced] p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
+                                    <button className="bg-[#c5cced] p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
                                         <p className=" ">
                                             2일
                                         </p>
                                     </button>
-                                    <button className=" bg-[#c5cced] p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
+                                    <button className="p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
                                         <p className=" ">
                                             4일
                                         </p>
                                     </button>
-                                    <button className=" bg-[#c5cced] p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
+                                    <button className="p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
                                         <p className=" ">
                                             7일
                                         </p>
                                     </button>
-                                    <button className=" bg-[#c5cced] p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
+                                    <button className="p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
                                         <p className="">
                                             15일
                                         </p>
                                     </button>
-                                    <button className=" bg-[#c5cced] p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
+                                    <button className="p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
                                         <p className=" ">
                                             30일
                                         </p>
                                     </button>
-                                    <button className=" bg-[#c5cced] p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
+                                    <button className="p-3 text-[1rem] m-2 rounded-full border-2 border-solid border-[#939ed2]">
                                         <p className=" ">
                                             전체
                                         </p>
@@ -156,9 +156,10 @@ function PBStatsPanelComponent(props) {
                     </div> */}
                 </div>
 
-                <AverageStatsTableComponent data={StatsData}/>
+                <AverageStatsTableComponent stats={StatsData}/>
+                <StatsBySelectionComponent />
 
-                지난 24시간동안의 평균 통계
+                <p>지난 24시간동안의 평균 통계</p>
             </div>
         </>
     )
