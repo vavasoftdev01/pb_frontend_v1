@@ -1,100 +1,63 @@
 import React, { useEffect, useState, useRef } from "react";
+import io from "socket.io-client";
 
 function PBTimer (props) {
-    const time_limit = props.time_limit_in_seconds
- 
-    const [timer, setTimer] = useState(time_limit)
+    const [timerMessage, setTimerMessage] = useState('배팅하세요');
+    const [progressColors, setProgressColors] = useState('bg-green-600');
+    const [serverTimer, setServerTimer] = useState();
+    const [timerStatus, setTimerStatus] = useState('');
+    const [progressBar1, setProgressBar1] = useState(100);
 
-    const [progressBar, setProgressBar] = useState(100)
-
-    const total_time = useRef(time_limit)
-
-    const [timerMessage, setTimerMessage] = useState('배팅하세요')
-
-    const [progressColors, setProgressColors] = useState('')
-
-    const t_status = props.ParentTimerStatus
-
-
-    const timerStart = () => {
-        const progress = 100 - ((total_time.current - timer) / total_time.current) * 100
-        setTimer((prevTimer) => prevTimer - 1)
-        setProgressBar((prevProgressBar) => prevProgressBar = progress)
-        setLoaderColor() 
-    }
 
     const setLoaderColor = () => {
-        switch (t_status) {
-            case 'open_betting':
-                setOpenBettingLoaderColor()  
+        switch (timerStatus) {
+            case 'betting_open':
+                setOpenBettingLoaderColor();  
             break;
 
-            case 'closed_betting':
-                setProgressColors('bg-[#525e98]')    
+            case 'betting_closed':
+                setProgressColors('bg-[#525e98]');    
             break;
 
-            case 'draw_results':
-                setProgressColors('bg-slate-800')   
+            case 'draw_result':
+                setProgressColors('bg-slate-800');  
             break;
         
             default:
-                setProgressColors('bg-green-600')  
+                setProgressColors('bg-green-600');
             break;
         }
     }
 
     const setOpenBettingLoaderColor = () => {
-        if(progressBar >= 5) {
-            setProgressColors('bg-red-600')
+        
+        if(progressBar1 >= 5) {
+            setProgressColors('bg-red-600');
         }
 
-        if(progressBar >= 25) {
-            setProgressColors('bg-orange-600')
+        if(progressBar1 >= 25) {
+            setProgressColors('bg-orange-600');
         }
 
-
-        if(progressBar >= 50) {
-            setProgressColors('bg-green-600')
+        if(progressBar1 >= 50) {
+            setProgressColors('bg-green-600');
         }   
     }
 
-
-    const timerStop = () => {
-        setTimer(total_time.current)
-        setProgressBar(100)
-        handleStatusOnChange()
-    }
-
-    const handleStatusOnChange = () => {
-        switch (t_status) {
-            case 'open_betting':
-                props.handleChildTimerStatusChange('closed_betting')
-            break;
-            case 'closed_betting':
-                props.handleChildTimerStatusChange('draw_results')
-            break;
-            case 'draw_results':
-                props.handleChildTimerStatusChange('open_betting')
-            break;
-            default:
-                props.handleChildTimerStatusChange('open_betting')
-            break;
-        }
-    }
-
-    const formattedTime = () => {
-        return new Date(timer * 1000).toISOString().substring(14, 19)
-    }
-
     useEffect(() => {
+        const timer_socket = io(`${import.meta.env.VITE_SOCKET_IO_URL}/timer`);
+        timer_socket.connect();
+        timer_socket.on('timerStart', (response) => {
+            setServerTimer(response.formatted_time);
+            let progress_bar_width = 100 - ((response.time_limit - response.timer) / response.time_limit) * 100
+            setProgressBar1(progress_bar_width);
+            setTimerStatus(response.timer_status);
+            setLoaderColor();
+            console.log(response)
+        });
 
-        let exec = setTimeout(() => {
-            timerStart()
-        }, 900);
-        
-        if(timer < 0) {
-            clearTimeout(exec)
-            timerStop()
+        return () => {
+            timer_socket.disconnect();
         }
 
     })
@@ -103,8 +66,8 @@ function PBTimer (props) {
         <>
             <div className="relative mb-6 w-full">
                 <div className="w-full rounded-t-lg">
-                    <span className={"flex absolute "+ progressColors } style={{ width: progressBar+'%', transition: '0.4s', transitionTimingFunction: 'ease-in'}}>&nbsp;</span>
-                    <span className="absolute bottom-0 left-0 right-0 top-1 grid place-items-center text-white text-xs">{ timerMessage } - { formattedTime() } </span>
+                    <span className={"flex absolute overflow-hidden "+ progressColors } style={{ width: progressBar1+'%', transition: '0.1s', transitionTimingFunction: 'ease-in'}}>&nbsp;</span>
+                    <span className="absolute bottom-0 left-0 right-0 top-1 grid place-items-center text-white text-xs">{ timerMessage } - { serverTimer } </span>
                 </div>
                 
             </div>
