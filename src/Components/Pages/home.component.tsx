@@ -24,8 +24,6 @@ function Home() {
 
     const socket = io()
 
-    console.log(import.meta.env.VITE_SOCKET_IO_URL)
-
     const toggleBettingForm = () => {
         setIsBettingFormVisible(!isBettingFormVisible);
     }
@@ -43,7 +41,6 @@ function Home() {
     const toggleStatsPanel = () => {
         setIsStatPanelVisible(!isStatPanelVisible)
         setIsMyBettingPanelVisible(false);
-        console.log(isStatPanelVisible)
     }
 
     useEffect(() => {
@@ -99,7 +96,7 @@ function Home() {
 
                                 {/* TODO: Show this panel when timer stop.. */}
                                 <div className={"absolute h-full w-full ease-in-out duration-300 "+ (timerStatus !== 'betting_open' ? "my-[-149%] opacity-100" : "my-[-12%] opacity-0")}>
-                                    <PBDrawPanelComponent />
+                                    <PBDrawPanelComponent ParentTimerStatus={timerStatus} ResultsIcon={results}/>
                                 </div> 
                             </div> 
                         </div>
@@ -111,7 +108,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <PBHomeFooterComponent />
+                <PBHomeFooterComponent ParentTimerStatus={timerStatus} ResultsIcon={results}/>
             </div>
             <div className={"history-stats-cont absolute w-[67rem] h-full "+(isMyBettingPanelVisible ||  isStatPanelVisible ? " transition delay-75 duration-75 ease-linear opacity-100": "-mr-[300rem] transition delay-75 duration-75 ease-linear opacity-0 ")}>
             

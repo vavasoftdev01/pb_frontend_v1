@@ -250,10 +250,6 @@ function PBGameContainerComponent(props) {
                                      <img src="./images/rect_res.gif" className="relative " alt="" />
                                 </div> 
                                 
-                                {/* <div className={"absolute w-full mt-[15rem] opacity-100 ease-in-out duration-300"}>
-                                     <img src="./images/rect_res.gif" className="relative " alt="" />
-                                </div>  */}
-                                
                                 {/* Append div into the container for results, add fadeIn effects */}
                                 
                             </div>
