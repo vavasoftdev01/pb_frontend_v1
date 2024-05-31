@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import StatsData from './../../PB_config/stats_sample_data.json'
 import AverageStatsTableComponent from "../Partials/stat_page_layouts/average_stats_table.component";
 import StatsBySelectionComponent from "../Partials/stat_page_layouts/stats_by_selection.component";
+import { io } from 'socket.io-client';
 
 function PBStatsPanelComponent(props) {
     const [pbFilter, setPbFilter] = useState('powerball_form') // pb_form & daily_analysis_form
     const [dateFilterFormVisible, setDateFilterFormVisible] = useState(false)
     const [checkboxByDateOrPeriod, setcheckboxByDateOrPeriod] = useState(false)
+    const [averageStatsData, setAverageStatsData] = useState();
+    
+    const socket = io();
 
     const handleFilter1FormToggle = (e) => {
         setPbFilter(e.target.value)
@@ -15,6 +19,22 @@ function PBStatsPanelComponent(props) {
             setDateFilterFormVisible(false)
         }
     }
+
+    useEffect(() => {
+        const stats_socket = io(`${import.meta.env.VITE_SOCKET_IO_URL}/statistics`);
+
+        stats_socket.connect();
+
+        stats_socket.emit('findAllStatistics', (response) => {
+            setAverageStatsData(response);
+            
+        });
+        
+
+        return () => {
+            stats_socket.disconnect();
+        }
+    });
 
     return(
         <>
@@ -46,10 +66,10 @@ function PBStatsPanelComponent(props) {
                         </button>
 
                         <select className={"filter-1 w-[49%] border-2 border-solid border-[#939ed2] rounded-md px-2 py-1 mt-2 mx-1 flex flex-col bg-[#eeeeee] "+(pbFilter == 'daily_analysis_form' ? "hidden": "")}>
-                            <option>파워볼 홀/짝</option>
-                            <option>파워볼 언더/오버</option>
-                            <option>파워볼 홀/짝</option>
-                            <option>파워볼 언더/오버</option>
+                            <option value="pb_odd-even">파워볼 홀/짝</option> 
+                            <option value="pb_over-under">파워볼 언더/오버</option>
+                            <option value="normalball_odd-even">파워볼 홀/짝</option>
+                            <option value="normalball_over-under">파워볼 언더/오버</option>
                         </select>
                     </div>
                     
@@ -156,7 +176,7 @@ function PBStatsPanelComponent(props) {
                     </div> */}
                 </div>
 
-                <AverageStatsTableComponent stats={StatsData}/>
+                <AverageStatsTableComponent statisticalData={averageStatsData}/>
                 <StatsBySelectionComponent />
 
                 <p>지난 24시간동안의 평균 통계</p>

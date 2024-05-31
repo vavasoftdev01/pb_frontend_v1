@@ -16,9 +16,7 @@ function PBHomeFooterComponent(props) {
         if(timer_status == 'draw_result') {
             setResults(props.ResultsIcon)
         }
-        
-        console.log(results)
-    });
+    }, []);
 
 
     return(

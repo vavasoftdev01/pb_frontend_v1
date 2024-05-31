@@ -1,9 +1,22 @@
-    import React from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 function AverageStatsTableComponent(props) {
+    
+    //const stats = useRef();
+    
+    const [stats, setStats] = useState(props.statisticalData);
 
-    const average_daily_data = props.stats.data
+    //const aa = useMemo(() => setStats(props.statisticalData),[stats])
 
+    useEffect(() => {
+        
+        setStats(props.statisticalData);
+
+        //props.statisticalData.
+        
+    });
+
+    console.log(stats);
 
     return(
         <>
@@ -61,54 +74,69 @@ function AverageStatsTableComponent(props) {
                     </div>
                 </div>
                 <div className="h-[50%]">
-                    <div className="bg-slate-100">
-                        {/* API Data here.. for horizontal table */}
-                        <table className="table table-auto border border-solid border-gray-500 text-center tracking-tight">
-                            <thead>
-                                <tr className="text-[0.5rem] font-bold">
-                                    <td className="border border-solid border-gray-500 p-1 text-red-500 h-[0.4rem] w-[2rem]">짝수</td>
-                                    <td className="border border-solid border-gray-500 p-1 text-blue-500 h-[0.4rem] w-[2rem]">홀수</td>
-                                </tr>
-                            </thead>
-                           {/* Row */}
-                            <tr className="text-[0.7rem] tracking-tight">
-                                <td className="border border-solid border-gray-500 p-2">
-                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
-                                        1449
-                                    </span>
-                                </td>
-                                <td className="border border-solid border-gray-500 p-2">
-                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
-                                        1449
-                                    </span>
-                                </td>
-                            </tr>
-                            {/* Row */}
-                            <tr className="text-[0.7rem] tracking-tight">
-                                <td className="border border-solid border-gray-500 p-2">
-                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
-                                        1449
-                                    </span>
-                                </td>
-                                <td className="border border-solid border-gray-500 p-2">
-                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
-                                        1449
-                                    </span>
-                                </td>
-                            </tr>
-                            {/* Row */}
-                            <tr className="text-[0.7rem] tracking-tight">
-                                <td className="border border-solid border-gray-500 p-2">
-                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
-                                        1441
-                                    </span>
-                                </td>
-                                <td className="border border-solid border-gray-500 p-2">
-                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
-                                        1441
-                                    </span>
-                                </td>
-                            </tr> 
+                    <div className="bg-slate-100 overflow-x-scroll">
+                        <table className="table table-auto  text-center tracking-tight">
+                            { stats?.map(item => (
+                                <>
+            
+                                    <td className="text-[0.5rem]">
+                                        <td className="border border-solid border-gray-500 p-1 text-red-500 ">짝수</td>
+                                        <td className="border border-solid border-gray-500 p-1 text-blue-500 ">홀수</td>
+                                        
+                                        <tr className="text-[0.7rem] tracking-tight">
+                                            <td>
+                                                
+                                                <table>
+                                                    {/* even */}    
+                                                    <tr>
+                                                        <td className="border border-solid border-gray-500 p-2">
+                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
+                                                                {item.idx}
+                                                            </span>
+                                                        </td>
+                                                    </tr>    
+                                                    <tr>
+                                                        <td className="border border-solid border-gray-500 p-2">
+                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
+                                                                {item.idx}
+                                                            </span>
+                                                        </td>
+                                                    </tr>    
+                                                    <tr>
+                                                        <td className="border border-solid border-gray-500 p-2">
+                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
+                                                                {item.idx}
+                                                            </span>
+                                                        </td>
+                                                    </tr>    
+                                                         
+                                                </table>
+                                                
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    {/* odd */}
+                                                    <tr>
+                                                        <td className="border border-solid border-gray-500 p-2">
+                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
+                                                            {item.idx}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="border border-solid border-gray-500 p-2">
+                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
+                                                            {item.idx}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr> 
+                                    </td>
+
+                                </>
+                             ))}
                         </table>
                     </div>
                 </div>
