@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import AverageStatData from "./average_stat_data.component";
 
 function AverageStatsTableComponent(props) {
     
@@ -75,6 +76,7 @@ function AverageStatsTableComponent(props) {
                 </div>
                 <div className="h-[50%]">
                     <div className="bg-slate-100 overflow-x-scroll">
+                        <AverageStatData />
                         <table className="table table-auto  text-center tracking-tight">
                             { stats?.map(item => (
                                 <>
