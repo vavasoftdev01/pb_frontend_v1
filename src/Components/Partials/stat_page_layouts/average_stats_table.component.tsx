@@ -1,24 +1,83 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import AverageStatData from "./average_stat_data.component";
+import _ from "lodash";
 
 function AverageStatsTableComponent(props) {
     
-    //const stats = useRef();
-    
     const [stats, setStats] = useState(props.statisticalData);
-
-    //const aa = useMemo(() => setStats(props.statisticalData),[stats])
-
+    
     useEffect(() => {
         
         setStats(props.statisticalData);
-
-        //props.statisticalData.
         
     });
 
-    console.log(stats);
+    const table_rows = Array.from({ length: stats?.length }, (_, index) => index);
+    const table_columns = Array.from({ length: 9 }, (_, index) => index);
 
+    const renderStats = () => {
+        
+           return <>
+
+            { stats && <tr>
+                    { Object.keys(stats).map(item => (
+                        <>
+                            
+                            { stats[item].length > 1 && stats[item].map(value => (
+                                <>
+                                    {value.pb_odd == 'E' && <tr>
+                                            
+                                            <td className="border border-solid border-gray-500 p-1">
+                                                { value.pb_odd }-{ value.idx }
+
+                                            </td>
+                                            
+                                    </tr>}
+                                    
+
+                                </>
+
+                            ))}
+
+                            <td>
+                            { stats[item].length > 1 && stats[item].map(value => (
+                                <>
+                                    {value.pb_odd == 'O' && <tr className="border border-solid border-gray-500">
+                                            
+                                            <td className="border border-solid border-gray-500 p-1">
+                                                { value.pb_odd }-{ value.idx }
+                                                
+                                            </td>
+                                            
+                                    </tr>}
+                                    
+                                    {/* continous streak but diff pb_odd value */}
+
+                                </>
+
+                            ))}
+
+                            </td>
+                            
+                            { stats[item].length == 1 && 
+                                
+                                <td className="border border-solid border-gray-500 p-1">
+                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white "+(stats[item][0]['pb_odd'] == 'E' ? "bg-blue-700": "bg-red-700")}>
+                                    { stats[item][0]['idx'] }
+                                    </span>
+                                </td>
+                            }
+                                    
+                        </>
+
+                    )) }
+                </tr>
+            }
+                
+           </>
+        
+    }
+    
     return(
         <>
             <div className="avg-stats-24hrs border-[0.1rem] border-solid border-gray-400 mt-[1rem] rounded-md p-2 mx-2 flex flex-col">
@@ -74,72 +133,57 @@ function AverageStatsTableComponent(props) {
                         </div>
                     </div>
                 </div>
-                <div className="h-[50%]">
-                    <div className="bg-slate-100 overflow-x-scroll">
-                        <AverageStatData />
+                <div className="h-[100%]">
+                    <div className="bg-slate-100 h-full overflow-x-scroll">
+                        {/* <AverageStatData /> */}
+                       
                         <table className="table table-auto  text-center tracking-tight">
-                            { stats?.map(item => (
-                                <>
+                            {/* { table_rows.map(item => ( */}
             
-                                    <td className="text-[0.5rem]">
-                                        <td className="border border-solid border-gray-500 p-1 text-red-500 ">짝수</td>
-                                        <td className="border border-solid border-gray-500 p-1 text-blue-500 ">홀수</td>
+                                <td className="text-[0.8rem]">
+                                        {/* <td className="border border-solid border-gray-500 p-1 text-red-500 ">짝수</td>
+                                        <td className="border border-solid border-gray-500 p-1 text-blue-500 ">홀수</td> */}
                                         
-                                        <tr className="text-[0.7rem] tracking-tight">
-                                            <td>
-                                                
-                                                <table>
-                                                    {/* even */}    
-                                                    <tr>
-                                                        <td className="border border-solid border-gray-500 p-2">
-                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
-                                                                {item.idx}
-                                                            </span>
-                                                        </td>
-                                                    </tr>    
-                                                    <tr>
-                                                        <td className="border border-solid border-gray-500 p-2">
-                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
-                                                                {item.idx}
-                                                            </span>
-                                                        </td>
-                                                    </tr>    
-                                                    <tr>
-                                                        <td className="border border-solid border-gray-500 p-2">
-                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
-                                                                {item.idx}
-                                                            </span>
-                                                        </td>
-                                                    </tr>    
-                                                         
-                                                </table>
-                                                
-                                            </td>
-                                            <td>
-                                                <table>
-                                                    {/* odd */}
-                                                    <tr>
-                                                        <td className="border border-solid border-gray-500 p-2">
-                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
-                                                            {item.idx}
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td className="border border-solid border-gray-500 p-2">
-                                                            <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
-                                                            {item.idx}
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr> 
-                                    </td>
+                                        {/* { table_columns.map(item => ( */}
+                                            <>
+                                                { renderStats() }
+                                                {/* <td className="border border-solid border-gray-500 p-2">
+                                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
+                                                        even 
+                                                    </span>
+                                                </td>
+                                                <td className="border border-solid border-gray-500 p-2">
+                                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
+                                                        odd
+                                                    </span>
+                                                </td> */}
 
-                                </>
-                             ))}
+                                            </>
+                                        
+                                        {/* ))} */}
+                                        {/* { table_columns.map(item => (
+                                            <>
+                                                <td className="border border-solid border-gray-500 p-1 text-red-500 ">짝수</td>
+                                                <td className="border border-solid border-gray-500 p-1 text-blue-500 ">홀수</td>
+                                                
+                                                
+                                                    <tr className="text-[0.7rem] tracking-tight"> 
+                                                        
+
+                                                    </tr>
+                                            </>
+                                            
+                                            
+
+                                        ))} */}
+                                       
+
+                                    
+                                    
+                                </td>
+                             {/* ))} */}
                         </table>
+
                     </div>
                 </div>
             </div>

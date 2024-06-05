@@ -25,7 +25,7 @@ function PBStatsPanelComponent(props) {
 
         stats_socket.connect();
 
-        stats_socket.emit('findAllStatistics', (response) => {
+        stats_socket.emit('findDailyStatistics', (response) => {
             setAverageStatsData(response);
             
         });
