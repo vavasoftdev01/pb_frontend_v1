@@ -28,8 +28,10 @@ function AverageStatsTableComponent(props) {
                                     {value.pb_odd == 'E' && <tr>
                                             
                                             <td className="border border-solid border-gray-500 p-1">
-                                                { value.pb_odd }-{ value.idx }
-
+                                               
+                                                <div className="col-span-1 p-[0.1rem] text-center">
+                                                    <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ value.idx }</div>
+                                                </div>
                                             </td>
                                             
                                     </tr>}
@@ -45,7 +47,15 @@ function AverageStatsTableComponent(props) {
                                     {value.pb_odd == 'O' && <tr className="border border-solid border-gray-500">
                                             
                                             <td className="border border-solid border-gray-500 p-1">
-                                                { value.pb_odd }-{ value.idx }
+                                                
+
+                                                {/* <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
+                                                    
+                                                </span> */}
+
+                                                <div className="col-span-1 p-[0.1rem] text-center">
+                                                    <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ value.idx }</div>
+                                                </div>
                                                 
                                             </td>
                                             
@@ -59,14 +69,23 @@ function AverageStatsTableComponent(props) {
 
                             </td>
                             
-                            { stats[item].length == 1 && 
-                                
+                            
+                            { stats[item].length == 1 && stats[item][0]['pb_odd'] == 'E' && 
                                 <td className="border border-solid border-gray-500 p-1">
-                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white "+(stats[item][0]['pb_odd'] == 'E' ? "bg-blue-700": "bg-red-700")}>
-                                    { stats[item][0]['idx'] }
-                                    </span>
-                                </td>
+                                    <div className="col-span-1 p-[0.1rem] text-center">
+                                        <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ stats[item][0]['idx'] }</div>
+                                    </div>
+                                </td> 
                             }
+
+                            { stats[item].length == 1 && stats[item][0]['pb_odd'] == 'O' && 
+                                <td className="border border-solid border-gray-500 p-1">
+                                    <div className="col-span-1 p-[0.1rem] text-center">
+                                        <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ stats[item][0]['idx'] }</div>
+                                    </div>
+                                </td> 
+                            }
+                            
                                     
                         </>
 
