@@ -17,84 +17,210 @@ function AverageStatsTableComponent(props) {
 
     const renderStats = () => {
         
-           return <>
+        //    return <>
 
-            { stats && <tr>
+        //     { stats && <tr>
+        //             { Object.keys(stats).map(item => (
+        //                 <>
+                            
+        //                     { stats[item].length > 1 && stats[item].map(value => (
+        //                         <>
+        //                             {value.pb_odd == 'E' && <tr>
+                                            
+        //                                     <td className="border border-solid border-gray-500 p-1">
+                                               
+        //                                         <div className="col-span-1 p-[0.1rem] text-center">
+        //                                             <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ value.idx }</div>
+        //                                         </div>
+        //                                     </td>
+                                            
+        //                             </tr>}
+ 
+        //                         </>
+
+        //                     ))}
+        //                     {/* tbody fragment */}
+        //                     <>
+        //                         <td>
+        //                         { stats[item].length > 1 && stats[item].map(value => (
+        //                             <>
+        //                                 {value.pb_odd == 'O' && <tr className="border border-solid border-gray-500">
+                                                
+        //                                         <td className="border border-solid border-gray-500 p-1">
+                                                    
+        //                                             <div className="col-span-1 p-[0.1rem] text-center">
+        //                                                 <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ value.idx }</div>
+        //                                             </div>
+                                                    
+        //                                         </td>
+                                                
+        //                                 </tr>}
+                                        
+        //                                 {/* continous streak but diff pb_odd value */}
+
+        //                             </>
+
+        //                         ))}
+
+        //                         </td>
+                                
+                                
+        //                         { stats[item].length == 1 && stats[item][0]['pb_odd'] == 'E' && 
+        //                             <td className="border border-solid border-gray-500 p-1">
+        //                                 <div className="col-span-1 p-[0.1rem] text-center">
+        //                                     <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ stats[item][0]['idx'] }</div>
+        //                                 </div>
+        //                             </td> 
+        //                         }
+
+        //                         { stats[item].length == 1 && stats[item][0]['pb_odd'] == 'O' && 
+        //                             <td className="border border-solid border-gray-500 p-1">
+        //                                 <div className="col-span-1 p-[0.1rem] text-center">
+        //                                     <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ stats[item][0]['idx'] }</div>
+        //                                 </div>
+        //                             </td> 
+        //                         }
+                            
+        //                     </>
+        //                     {/* tbody fragment */}
+                                    
+        //                 </>
+
+        //             )) }
+        //         </tr>
+        //     }
+                
+        //    </>
+
+        return <>
+            { stats && <div className="grid grid-flow-col">
+                
                     { Object.keys(stats).map(item => (
                         <>
                             
-                            { stats[item].length > 1 && stats[item].map(value => (
+                            <div className="grid grid-flow-row">
                                 <>
-                                    {value.pb_odd == 'E' && <tr>
+                                
+                                    {/* EVEN STREAK */}
+                                    <div className="grid grid-flow-row row-start-1">
+                                        <div className="container" key={item}>
+                                        
+                                            {  stats[item].length > 1 && stats[item].map(value => (
+
+                                                <>
+                                                    { value.pb_odd == 'E' &&
+                                                        <div>
+                                                            <div className=" border border-solid border-gray-500 text-[0.5rem] p-1 w-8 text-center">
+                                                                <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                                    { value.idx }
+                                                                </div>
+                                                                   
+                                                            </div>
+                                                            
+                                                        </div>
+
+                                                    }
+
+                                                </>
+
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* ODD STREAK */}
+                                    <div className="grid grid-flow-row row-start-1">
+                                        <div className="container">
+                                        
+                                        { stats[item].length > 1 && stats[item].map(value => (
                                             
-                                            <td className="border border-solid border-gray-500 p-1">
-                                               
-                                                <div className="col-span-1 p-[0.1rem] text-center">
-                                                    <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ value.idx }</div>
-                                                </div>
-                                            </td>
-                                            
-                                    </tr>}
-                                    
-
-                                </>
-
-                            ))}
-
-                            <td>
-                            { stats[item].length > 1 && stats[item].map(value => (
-                                <>
-                                    {value.pb_odd == 'O' && <tr className="border border-solid border-gray-500">
-                                            
-                                            <td className="border border-solid border-gray-500 p-1">
-                                                
-
-                                                {/* <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
+                                            <>
+            
+                                                { value.pb_odd == 'O' &&
+                                                    <div className=" border border-solid border-gray-500 text-[0.5rem] p-1 w-8 text-center">
+                                                        <div className="bg-blue-600 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            { value.idx }
+                                                        </div>
+                                                        
+                                                    </div>
                                                     
-                                                </span> */}
+                                                }
 
-                                                <div className="col-span-1 p-[0.1rem] text-center">
-                                                    <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ value.idx }</div>
-                                                </div>
-                                                
-                                            </td>
-                                            
-                                    </tr>}
-                                    
-                                    {/* continous streak but diff pb_odd value */}
+                                            </>
 
+                                        ))}
+
+
+                                        </div>
+                                        
+                                    </div>
                                 </>
 
-                            ))}
+                                <>
 
-                            </td>
-                            
-                            
-                            { stats[item].length == 1 && stats[item][0]['pb_odd'] == 'E' && 
-                                <td className="border border-solid border-gray-500 p-1">
-                                    <div className="col-span-1 p-[0.1rem] text-center">
-                                        <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ stats[item][0]['idx'] }</div>
-                                    </div>
-                                </td> 
-                            }
+                                    { stats[item].length == 1 && stats[item][0]['pb_odd'] == 'E' &&
+                                        
+                                        <div className="grid grid-flow-row row-start-1">
+                                            <div className="border border-solid border-gray-500 p-1">
+                                                <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                    { stats[item][0]['idx'] }
+                                                </div>
+                                            </div>
+                                            
 
-                            { stats[item].length == 1 && stats[item][0]['pb_odd'] == 'O' && 
-                                <td className="border border-solid border-gray-500 p-1">
-                                    <div className="col-span-1 p-[0.1rem] text-center">
-                                        <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">{ stats[item][0]['idx'] }</div>
-                                    </div>
-                                </td> 
-                            }
-                            
+                                            { autoPadding(stats[item].length).map(item => (
+                                                <div className="border border-solid border-gray-500 p-1">&nbsp;</div>
+
+                                            ))}
+
+                                        </div>
+
+                                        
+
+                                    }
                                     
-                        </>
+                                    { stats[item].length == 1 && stats[item][0]['pb_odd'] == 'O' &&
+                                        
+                                        <div className="grid grid-flow-row row-start-1">
+                                            <div className="border border-solid border-gray-500 p-1">
+                                                <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                    { stats[item][0]['idx'] }
+                                                </div>
+                                            </div>
+                                            { autoPadding(stats[item].length).map(item => (
+                                                <div className="border border-solid border-gray-500 p-1">&nbsp;</div>
 
-                    )) }
-                </tr>
-            }
+                                            ))}
+
+                                        </div>
+
+                                    }
+                                
+                                </>
+
+                                
+                            </div>
+                        </>
+                   
+                    ))}
+
                 
-           </>
+                
+            </div>}
+
+        </>
         
+            
+        
+    }
+
+    const autoPadding = (count) => {
+        const total_row_padding = 10;
+        let pad = 0;
+        for (let index = count; index <= total_row_padding; index++) {
+           pad += 1
+            
+        }
+        return Array.from({ length: pad }, (_, index) => index); 
     }
     
     return(
@@ -107,11 +233,11 @@ function AverageStatsTableComponent(props) {
                                 <span className="circle bg-blue-800 px-[0.4rem] py-[0.3rem] rounded-full text-xs text-white">홀</span>
                             </div>
                             <div className="ml-3 flex flex-col">
-                                <text className="text-sm">
-                                    <text className="font-bold">708&nbsp;</text>
+                                <span className="text-sm">
+                                    <span className="font-bold">708&nbsp;</span>
                                     번 (49.17%)
-                                </text>
-                                <text className="text-gray-300 text-xs">9 연속 회</text>
+                                </span>
+                                <span className="text-gray-300 text-xs">9 연속 회</span>
                             </div>  
                         </div>
                         <div className="w-full inline-flex mt-2">
@@ -119,11 +245,11 @@ function AverageStatsTableComponent(props) {
                                 <span className="circle bg-red-800 px-[0.4rem] py-[0.3rem] rounded-full text-xs text-white">짝</span>
                             </div>
                             <div className="ml-3 flex flex-col">
-                                <text className="text-sm">
-                                    <text className="font-bold">732&nbsp;</text>
+                                <span className="text-sm">
+                                    <span className="font-bold">732&nbsp;</span>
                                     번 (50.83%)
-                                </text>
-                                <text className="text-gray-300 text-xs">11 연속 회</text>
+                                </span>
+                                <span className="text-gray-300 text-xs">11 연속 회</span>
                             </div>  
                         </div>
                     </div>
@@ -134,9 +260,9 @@ function AverageStatsTableComponent(props) {
                                 <span className="circle bg-[#40c] px-[0.3rem] py-[0.5rem] rounded-full text-[0.5rem] text-white">퐁당</span>
                             </div>
                             <div className="ml-3 flex flex-col">
-                                <text className="text-sm">
-                                <text className="font-bold">382&nbsp;</text>  
-                                번</text>
+                                <span className="text-sm">
+                                <span className="font-bold">382&nbsp;</span>  
+                                번</span>
                             </div>
                         </div>
                         <div className="w-full mt-2 inline-flex justify-end">
@@ -144,64 +270,55 @@ function AverageStatsTableComponent(props) {
                                 <span className="circle bg-slate-800 px-[0.3rem] py-[0.5rem] rounded-full text-[0.5rem] text-white">꺽음</span>
                             </div>
                             <div className="ml-3 flex flex-col">
-                                <text className="text-sm">
-                                    <text className="font-bold">719&nbsp;</text>
+                                <span className="text-sm">
+                                    <span className="font-bold">719&nbsp;</span>
                                     번
-                                </text>
+                                </span>
                             </div>  
                         </div>
                     </div>
                 </div>
                 <div className="h-[100%]">
-                    <div className="bg-slate-100 h-full overflow-x-scroll">
+                    <div className="bg-slate-100 h-full overflow-x-scroll overflow-y-scroll">
                         {/* <AverageStatData /> */}
                        
-                        <table className="table table-auto  text-center tracking-tight">
-                            {/* { table_rows.map(item => ( */}
-            
-                                <td className="text-[0.8rem]">
-                                        {/* <td className="border border-solid border-gray-500 p-1 text-red-500 ">짝수</td>
-                                        <td className="border border-solid border-gray-500 p-1 text-blue-500 ">홀수</td> */}
+                        {/* <table className="table table-auto  text-center tracking-tight">
+                           
+                            <td className="text-[0.8rem]">
+
+                                { renderStats() }
+
+                            </td>
+                            
+                        </table> */}
+
+                        
+
+                        {/* <div className="grid grid-flow-col">
+                            { table_rows.map(item => (
+                                <>
+                                    {item}
+                                    <div className="grid grid-flow-row">
                                         
-                                        {/* { table_columns.map(item => ( */}
-                                            <>
-                                                { renderStats() }
-                                                {/* <td className="border border-solid border-gray-500 p-2">
-                                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-red-700"}>
-                                                        even 
-                                                    </span>
-                                                </td>
-                                                <td className="border border-solid border-gray-500 p-2">
-                                                    <span className={"circle px-[0.2rem] py-[0.4rem] rounded-full text-[0.5rem] text-white bg-blue-700"}>
-                                                        odd
-                                                    </span>
-                                                </td> */}
+                                        { table_rows.map(item1 => (
 
-                                            </>
-                                        
-                                        {/* ))} */}
-                                        {/* { table_columns.map(item => (
-                                            <>
-                                                <td className="border border-solid border-gray-500 p-1 text-red-500 ">짝수</td>
-                                                <td className="border border-solid border-gray-500 p-1 text-blue-500 ">홀수</td>
-                                                
-                                                
-                                                    <tr className="text-[0.7rem] tracking-tight"> 
-                                                        
+                                            <div className="grid grid-flow-row border border-solid border-gray-500 text-[0.5rem] p-1 w-8 text-center text-blue-500">
+                                                {item1}
+                                            </div>
 
-                                                    </tr>
-                                            </>
-                                            
-                                            
+                                        ))}
 
-                                        ))} */}
-                                       
-
+                                    </div>
                                     
-                                    
-                                </td>
-                             {/* ))} */}
-                        </table>
+                                
+                                </>
+                                 
+
+                            ))}
+                               
+                        </div> */}
+
+                        { renderStats() }
 
                     </div>
                 </div>
