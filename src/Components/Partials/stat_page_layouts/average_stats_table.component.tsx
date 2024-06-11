@@ -31,7 +31,7 @@ function AverageStatsTableComponent(props) {
                                     </div>
 
                                     <div className="even-container">
-                                        {  _.size(value.EVEN) > 1 && value.EVEN.map(col => (
+                                        {  _.size(value.EVEN) > 1 && value.EVEN.map((col, i, {length}) => (
                                             
                                             <>
                                             
@@ -43,6 +43,15 @@ function AverageStatsTableComponent(props) {
                                                                 { col.idx }
                                                             </div>      
                                                         </div>
+
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border border-solid border-gray-500 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+                                                            </>
+                                                        }
                                                     </div>
 
                                                 }
@@ -54,7 +63,7 @@ function AverageStatsTableComponent(props) {
                                     </div>
 
                                     <div className="odd-container">
-                                        {  _.size(value.ODD) > 1 && value.ODD.map(col => (
+                                        {  _.size(value.ODD) > 1 && value.ODD.map((col, i, {length}) => (
 
                                             <>
                                                 { col.pb_odd == 'O' &&
@@ -65,6 +74,15 @@ function AverageStatsTableComponent(props) {
                                                                 { col.idx }
                                                             </div>       
                                                         </div>
+                                                        
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border border-solid border-gray-500 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+                                                            </>
+                                                        }
                                                     </div>
                                                     
                                                 }
@@ -92,7 +110,7 @@ function AverageStatsTableComponent(props) {
                                                 </div>
 
                                                 { autoPadding( _.size(value.EVEN)).map(item => (
-                                                    <div className="border border-solid border-gray-500 p-1">&nbsp;</div>
+                                                    <div className="border border-solid border-gray-500 p-[0.12rem]">&nbsp;</div>
     
                                                 ))}
                                             </>
@@ -112,7 +130,7 @@ function AverageStatsTableComponent(props) {
                                                 </div>
                                                 
                                                 { autoPadding( _.size(value.ODD)).map(item => (
-                                                    <div className="border border-solid border-gray-500 p-1">&nbsp;</div>
+                                                    <div className="border border-solid border-gray-500 p-[0.12rem]">&nbsp;</div>
     
                                                 ))}
                                             </>
@@ -128,7 +146,7 @@ function AverageStatsTableComponent(props) {
     }
 
     const autoPadding = (count) => {
-        const total_row_padding = 10;
+        const total_row_padding = 12;
         let pad = 0;
         for (let index = count; index <= total_row_padding; index++) {
            pad += 1
