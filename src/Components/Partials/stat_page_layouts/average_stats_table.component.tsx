@@ -26,8 +26,8 @@ function AverageStatsTableComponent(props) {
                                     {/* { JSON.stringify(value?.EVEN)}
                                     { _.size(value.EVEN)} */}
                                     <div className="header">
-                                        {  value['EVEN'] && <div className="border-[0.08rem] border-solid border-gray-300 p-1 text-red-500 text-[0.5rem] text-center">짝수</div> }
-                                        {  value['ODD'] && <div className="border-[0.08rem] border-solid border-gray-300 p-1 text-blue-500 text-[0.5rem] text-center">홀수</div> }
+                                        {  value['EVEN'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-red-500 text-[0.5rem] text-center">짝수</div> }
+                                        {  value['ODD'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-blue-500 text-[0.5rem] text-center">홀수</div> }
                                     </div>
 
                                     <div className="even-container">
@@ -38,7 +38,7 @@ function AverageStatsTableComponent(props) {
                                                 { col.pb_odd == 'E' &&
                                                     
                                                     <div>
-                                                        <div className=" border-[0.08rem] border-solid border-gray-300 text-[0.5rem] p-1 w-9 text-center">
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-9 text-center">
                                                             <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                                 { col.round }
                                                             </div>      
@@ -47,11 +47,11 @@ function AverageStatsTableComponent(props) {
                                                         {/* last element for padding */}
                                                         { i + 1 == length && <>
                                                                 { autoPadding( length).map(item => (
-                                                                    <div className="border-[0.08rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
                     
                                                                 ))}
 
-                                                                <div className="border-[0.08rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
                                                                     <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
                                                                         { _.size(value.EVEN) }
                                                                     </div>
@@ -76,7 +76,7 @@ function AverageStatsTableComponent(props) {
                                                 { col.pb_odd == 'O' &&
                                                     
                                                     <div>
-                                                        <div className=" border-[0.08rem] border-solid border-gray-300 text-[0.5rem] p-1 w-9 text-center">
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-9 text-center">
                                                             <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                                 { col.round }
                                                             </div>       
@@ -85,11 +85,11 @@ function AverageStatsTableComponent(props) {
                                                         {/* last element for padding */}
                                                         { i + 1 == length && <>
                                                                 { autoPadding( length).map(item => (
-                                                                    <div className="border-[0.08rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
                     
                                                                 ))}
 
-                                                                <div className="border-[0.08rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
                                                                     <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
                                                                         { _.size(value.ODD) }
                                                                     </div>
@@ -115,7 +115,7 @@ function AverageStatsTableComponent(props) {
                                         {  _.size(value.EVEN) == 1 && value.EVEN &&
                                             <>
                                                 <div className="grid grid-flow-row row-start-1">
-                                                    <div className="border-[0.08rem] border-solid border-gray-300 p-1">
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-1">
                                                         <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                             { value.EVEN[0]['round'] }
                                                         </div>
@@ -124,11 +124,11 @@ function AverageStatsTableComponent(props) {
                                                 </div>
 
                                                 { autoPadding( _.size(value.EVEN)).map(item => (
-                                                    <div className="border-[0.08rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
     
                                                 ))}
 
-                                                <div className="border-[0.08rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
                                                     <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
                                                         1
                                                     </div>
@@ -141,7 +141,7 @@ function AverageStatsTableComponent(props) {
                                         { _.size(value.ODD) == 1 && value.ODD &&
                                             <>
                                                 <div className="grid grid-flow-row row-start-1">
-                                                    <div className="border-[0.08rem] border-solid border-gray-300 p-1">
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-1">
                                                         <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                             { value.ODD[0]['round'] }
                                                         </div>
@@ -151,11 +151,11 @@ function AverageStatsTableComponent(props) {
                                                 </div>
                                                 
                                                 { autoPadding( _.size(value.ODD)).map(item => (
-                                                    <div className="border-[0.08rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
     
                                                 ))}
 
-                                                <div className="border-[0.08rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
                                                     <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
                                                         1
                                                     </div>
