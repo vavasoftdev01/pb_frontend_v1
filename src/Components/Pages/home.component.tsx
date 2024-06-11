@@ -112,7 +112,7 @@ function Home() {
             </div>
             <div className={"history-stats-cont absolute w-[67rem] h-full "+(isMyBettingPanelVisible ||  isStatPanelVisible ? " transition delay-75 duration-75 ease-linear opacity-100": "-mr-[300rem] transition delay-75 duration-75 ease-linear opacity-0 ")}>
             
-                <div className="{z-[20] h-full absolute}">
+                <div className="{z-[20] h-full overflow-y-scroll absolute}">
                     {isMyBettingPanelVisible && <PBDrawPanelComponent toggleMyBetHistoryPanel={toggleBettingHistoryPanel}/>}
 
                     {isStatPanelVisible && <PBStatsPanelComponent toggleStatsPanelChild={toggleStatsPanel}/>}

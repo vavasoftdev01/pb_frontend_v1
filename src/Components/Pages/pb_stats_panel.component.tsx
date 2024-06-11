@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import StatsData from './../../PB_config/stats_sample_data.json'
 import AverageStatsTableComponent from "../Partials/stat_page_layouts/average_stats_table.component";
 import StatsBySelectionComponent from "../Partials/stat_page_layouts/stats_by_selection.component";
 import { io } from 'socket.io-client';
+import StatsGraphData from "../Partials/stat_page_layouts/stats_graph_data.component";
 
 function PBStatsPanelComponent(props) {
     const [pbFilter, setPbFilter] = useState('powerball_form');// pb_form & daily_analysis_form
@@ -182,6 +182,9 @@ function PBStatsPanelComponent(props) {
                 </div>
 
                 <AverageStatsTableComponent statistics={stats}/>
+
+                <StatsGraphData data={stats}/>
+
                 {/* <StatsBySelectionComponent /> */}
 
             </div>
