@@ -5,10 +5,12 @@ import StatsBySelectionComponent from "../Partials/stat_page_layouts/stats_by_se
 import { io } from 'socket.io-client';
 
 function PBStatsPanelComponent(props) {
-    const [pbFilter, setPbFilter] = useState('powerball_form') // pb_form & daily_analysis_form
-    const [dateFilterFormVisible, setDateFilterFormVisible] = useState(false)
-    const [checkboxByDateOrPeriod, setcheckboxByDateOrPeriod] = useState(false)
+    const [pbFilter, setPbFilter] = useState('powerball_form');// pb_form & daily_analysis_form
+    const [dateFilterFormVisible, setDateFilterFormVisible] = useState(false);
+    const [checkboxByDateOrPeriod, setcheckboxByDateOrPeriod] = useState(false);
     const [averageStatsData, setAverageStatsData] = useState();
+
+    const [stats, setStats] = useState();
     
     const socket = io();
 
@@ -25,10 +27,13 @@ function PBStatsPanelComponent(props) {
 
         stats_socket.connect();
 
-        stats_socket.emit('findDailyStatistics', (response) => {
-            setAverageStatsData(response);
-            
+        
+        stats_socket.emit('getDailyPBStatistics', (response) => {
+            setStats(response);
         });
+
+
+        
         
 
         return () => {
@@ -176,7 +181,7 @@ function PBStatsPanelComponent(props) {
                     </div> */}
                 </div>
 
-                <AverageStatsTableComponent statisticalData={averageStatsData}/>
+                <AverageStatsTableComponent statistics={stats}/>
                 <StatsBySelectionComponent />
 
                 <p>지난 24시간동안의 평균 통계</p>
