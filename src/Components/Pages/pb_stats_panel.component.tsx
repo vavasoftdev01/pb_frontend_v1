@@ -182,9 +182,8 @@ function PBStatsPanelComponent(props) {
                 </div>
 
                 <AverageStatsTableComponent statistics={stats}/>
-                <StatsBySelectionComponent />
+                {/* <StatsBySelectionComponent /> */}
 
-                <p>지난 24시간동안의 평균 통계</p>
             </div>
         </>
     )
