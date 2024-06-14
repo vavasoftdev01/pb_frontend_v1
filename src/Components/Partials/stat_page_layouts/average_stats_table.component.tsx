@@ -38,7 +38,7 @@ function AverageStatsTableComponent(props) {
                                                 { col.pb_odd == 'E' &&
                                                     
                                                     <div>
-                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-9 text-center">
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
                                                             <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                                 { col.round }
                                                             </div>      
@@ -76,7 +76,7 @@ function AverageStatsTableComponent(props) {
                                                 { col.pb_odd == 'O' &&
                                                     
                                                     <div>
-                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-9 text-center">
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
                                                             <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                                 { col.round }
                                                             </div>       
@@ -166,8 +166,8 @@ function AverageStatsTableComponent(props) {
                                     </>
                                 </div>
                             </div>
-                            <div className="border-[0.09rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem] w-9">
-                                <div className="text-gray-500 -p-1 w-7 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                            <div className="border-[0.09rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem] w-full">
+                                <div className="text-gray-500 -p-1 w h-5 flex items-center justify-center mx-auto text-[0.8rem]">
                                     { key + 1 }
                                 </div>
                             </div>
