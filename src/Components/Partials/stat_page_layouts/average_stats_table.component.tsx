@@ -201,7 +201,7 @@ function AverageStatsTableComponent(props) {
                             <div className="ml-3 flex flex-col">
                                 <span className="text-sm">
                                     <span className="font-bold">{ statistics?.[0].results.length - statistics?.[0].even_count }&nbsp;</span>
-                                    번 ({ Math.abs(Math.round((statistics?.[0].results.length - statistics?.[0].even_count) * 100 / statistics?.[0].results.length)) }%)
+                                    번 ({ Math.abs((statistics?.[0].results.length - statistics?.[0].even_count) * 100 / statistics?.[0].results.length).toFixed(2) }%)
                                 </span>
                                 <span className="text-gray-400 font-medium  text-xs">{ statistics?.[0].streak.odd_streak_count[0].length }&nbsp;연속 회</span>
                             </div>  
@@ -213,7 +213,7 @@ function AverageStatsTableComponent(props) {
                             <div className="ml-3 flex flex-col">
                                 <span className="text-sm">
                                     <span className="font-bold">{ statistics?.[0].even_count  }&nbsp;</span>
-                                    번 ({ Math.abs(Math.round((statistics?.[0].even_count * 100) / statistics?.[0].results.length)) }%)
+                                    번 ({ Math.abs((statistics?.[0].even_count * 100) / statistics?.[0].results.length).toFixed(2) }%)
                                 </span>
                                 <span className="text-gray-400 font-medium text-xs">{ statistics?.[0].streak.even_streak_count[0].length }&nbsp;연속 회</span>
                             </div>  
