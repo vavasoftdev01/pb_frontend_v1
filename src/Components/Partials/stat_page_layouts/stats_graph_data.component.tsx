@@ -91,11 +91,11 @@ function StatsGraphData(props) {
 
     return(
         <>
-            <div className="w-auto mb-10 p-2">
+            <div className="w-full mb-10 p-2">
                <div className="flex flex-row main">
 
-                    <div className="w-full flex flex-col">
-                        <div className="bg-[#eeeeee] pt-2 pb-2 my-2 mx-2 rounded-[2rem] border-solid border-black border-2 flex flex-col h-full">
+                    <div className="w-auto flex flex-col">
+                        <div className="bg-[#eeeeee] pt-2 pb-2 my-2 mx-2 rounded-[2rem] border-solid border-black border-2 flex flex-col h-full w-[50rem]">
 
                             {/* Header */}
                             <div className="border-b-2 border-black pl-5 inline-flex">
@@ -203,7 +203,7 @@ function StatsGraphData(props) {
                                     </div>
                                 </div>
                                 <div className="circle-container w-[5%] -mt-1">
-                                    <div className={" text-white rounded-full -p-1 w-7 h-7 flex items-center justify-center mx-auto text-[0.5rem] " + ((normalball_even_count >  normalball_odd_count) ? 'bg-red-500': 'bg-[#7a6c5e]')}>
+                                    <div className={" text-white rounded-full -p-1 w-7 h-7 flex items-center justify-center mx-auto text-[0.5rem] " + ((normalball_even_count >  normalball_odd_count) ? 'bg-[#aa2d37]': 'bg-[#7a6c5e]')}>
                                         짝
                                     </div>
                                 </div>
@@ -242,14 +242,14 @@ function StatsGraphData(props) {
                     </div>
 
                     <div className="graph w-[30%] flex flex-col">
-                        <div className="mx-7 h-[60%] w-full">
+                        <div className="ml-2 h-[80%] w-full">
                             { graphData && <div className="ml-4 h-[80%]">
                                 { renderChart() }
                             </div>}
                         </div>
-                        <div className="caption-data mx-10 h-[40%] flex flex-col gap-1 justify-evenly text-sm -mt-[1.8rem]">
+                        <div className="caption-data mx-10 h-[40%] ml-7 flex flex-col gap-2 justify-evenly text-sm -mt-[1.8rem]">
                                 <div className="flex flex-row h-full">
-                                    <div className="bg-[#aa2d37] w-[2rem] h-[1.7rem] m-1 rounded-full"></div>
+                                    <div className="bg-[#aa2d37] w-[2rem] h-[1.6rem] m-1 rounded-full"></div>
                                     <div className="w-full">
                                         <span className=" font-semibold">
                                             대:   
@@ -258,7 +258,7 @@ function StatsGraphData(props) {
                                     </div>
                                 </div>
                                 <div className="flex flex-row h-full">
-                                    <div className="bg-[#055abb] w-[2rem] h-[1.7rem] m-1 rounded-full"></div>
+                                    <div className="bg-[#055abb] w-[2rem] h-[1.6rem] m-1 rounded-full"></div>
                                     <div className="w-full">
                                         <span className="font-semibold">
                                             중:   
@@ -267,7 +267,7 @@ function StatsGraphData(props) {
                                     </div>
                                 </div>
                                 <div className="flex flex-row h-full">
-                                    <div className="bg-[#2F8C43] w-[2rem] h-[1.7rem] m-1 rounded-full"></div>
+                                    <div className="bg-[#2F8C43] w-[2rem] h-[1.6rem] m-1 rounded-full"></div>
                                     <div className="w-full">
                                         <span className="font-semibold">
                                             소:   

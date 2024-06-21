@@ -3,6 +3,7 @@ import AverageStatsTableComponent from "../Partials/stat_page_layouts/average_st
 import StatsBySelectionComponent from "../Partials/stat_page_layouts/stats_by_selection.component";
 import { io } from 'socket.io-client';
 import StatsGraphData from "../Partials/stat_page_layouts/stats_graph_data.component";
+import ResultsDataTableComponent from "../Partials/stat_page_layouts/results_data_table.component";
 
 function PBStatsPanelComponent(props) {
     const [pbFilter, setPbFilter] = useState('powerball_form');// pb_form & daily_analysis_form
@@ -23,7 +24,7 @@ function PBStatsPanelComponent(props) {
     }
 
     useEffect(() => {
-        const stats_socket = io(`${import.meta.env.VITE_SOCKET_IO_URL}/statistics`);
+        const stats_socket = io(`${import.meta.env.VITE_SOCKET_IO_URL}`);
 
         stats_socket.connect();
 
@@ -32,9 +33,6 @@ function PBStatsPanelComponent(props) {
             setStats(response);
         });
 
-
-        
-        
 
         return () => {
             stats_socket.disconnect();
@@ -184,6 +182,8 @@ function PBStatsPanelComponent(props) {
                 <AverageStatsTableComponent statistics={stats}/>
 
                 <StatsGraphData data={stats}/>
+
+                <ResultsDataTableComponent />
 
                 {/* <StatsBySelectionComponent /> */}
 

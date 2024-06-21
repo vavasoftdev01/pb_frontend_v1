@@ -8,6 +8,8 @@ function AverageStatsTableComponent(props) {
 
     useEffect(() => {
         setStatistics(props.statistics);
+
+        console.log(statistics);
     });
 
 
@@ -77,7 +79,7 @@ function AverageStatsTableComponent(props) {
                                                     
                                                     <div>
                                                         <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
-                                                            <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                                 { col.round }
                                                             </div>       
                                                         </div>
@@ -142,7 +144,7 @@ function AverageStatsTableComponent(props) {
                                             <>
                                                 <div className="grid grid-flow-row row-start-1">
                                                     <div className="border-[0.05rem] border-solid border-gray-300 p-1">
-                                                        <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                        <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                             { value.ODD[0]['round'] }
                                                         </div>
                                                     </div>
@@ -180,7 +182,7 @@ function AverageStatsTableComponent(props) {
     }
 
     const autoPadding = (count) => {
-        const total_row_padding = 10;
+        const total_row_padding = 12;
         let pad = 0;
         for (let index = count; index <= total_row_padding; index++) {
            pad += 1
@@ -200,7 +202,7 @@ function AverageStatsTableComponent(props) {
                             </div>
                             <div className="ml-3 flex flex-col">
                                 <span className="text-sm">
-                                    <span className="font-bold">{ statistics?.[0].results.length - statistics?.[0].even_count }&nbsp;</span>
+                                    <span className="font-bold">{ statistics?.[0].results_count - statistics?.[0].even_count }&nbsp;</span>
                                     번 ({ Math.abs((statistics?.[0].results.length - statistics?.[0].even_count) * 100 / statistics?.[0].results.length).toFixed(2) }%)
                                 </span>
                                 <span className="text-gray-400 font-medium  text-xs">{ statistics?.[0].streak.odd_streak_count[0].length }&nbsp;연속 회</span>

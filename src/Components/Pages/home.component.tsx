@@ -66,7 +66,7 @@ function Home() {
             timer_socket.disconnect();
             results_socket.disconnect();
         }
-    });
+    },[timerStatus]);
 
     
   return (
