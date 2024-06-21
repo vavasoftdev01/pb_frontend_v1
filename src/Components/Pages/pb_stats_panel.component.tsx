@@ -4,16 +4,22 @@ import StatsBySelectionComponent from "../Partials/stat_page_layouts/stats_by_se
 import { io } from 'socket.io-client';
 import StatsGraphData from "../Partials/stat_page_layouts/stats_graph_data.component";
 import ResultsDataTableComponent from "../Partials/stat_page_layouts/results_data_table.component";
+import moment from 'moment-timezone';
+
 
 function PBStatsPanelComponent(props) {
     const [pbFilter, setPbFilter] = useState('powerball_form');// pb_form & daily_analysis_form
     const [dateFilterFormVisible, setDateFilterFormVisible] = useState(false);
     const [checkboxByDateOrPeriod, setcheckboxByDateOrPeriod] = useState(false);
     const [averageStatsData, setAverageStatsData] = useState();
-
     const [stats, setStats] = useState();
-    
     const socket = io();
+
+    const [filters, setFilters] = useState({
+        'start': moment().tz(`${import.meta.env.VITE_APP_TIMEZONE}`).subtract(1, 'day').format('YYYY-MM-DD HH:mm:ss'),
+        'end': moment().tz(`${import.meta.env.VITE_APP_TIMEZONE}`).format('YYYY-MM-DD HH:mm:ss'),
+        'type': 'pb_odd'
+    });
 
     const handleFilter1FormToggle = (e) => {
         setPbFilter(e.target.value)
@@ -24,20 +30,35 @@ function PBStatsPanelComponent(props) {
     }
 
     useEffect(() => {
-        const stats_socket = io(`${import.meta.env.VITE_SOCKET_IO_URL}`);
-
-        stats_socket.connect();
-
+        const socket = socketEmitter();
         
-        stats_socket.emit('getDailyPBStatistics', (response) => {
-            setStats(response);
-        });
-
-
         return () => {
-            stats_socket.disconnect();
+            socket.disconnect();
         }
     });
+
+    const onFilterChange = (e) => {
+        e.preventDefault();
+        console.log(typeof(e.target.value))
+
+        setFilters({
+            'start': moment().tz(`${import.meta.env.VITE_APP_TIMEZONE}`).subtract(1, 'day').format('YYYY-MM-DD HH:mm:ss'),
+            'end': moment().tz(`${import.meta.env.VITE_APP_TIMEZONE}`).format('YYYY-MM-DD HH:mm:ss'),
+            'type': e.target.value
+        })
+
+        socketEmitter();
+    }
+
+    const socketEmitter = () => {
+        const stats_socket = io(`${import.meta.env.VITE_SOCKET_IO_URL}`);
+        stats_socket.connect();
+        stats_socket.emit('getStatistics', filters, (response) => {
+            setStats(response);
+        });
+        
+        return stats_socket;
+    }
 
     return(
         <>
@@ -68,11 +89,11 @@ function PBStatsPanelComponent(props) {
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Icons/Filter"><path id="Vector" d="M19.9895 2H4.01055C3.16473 2 2.69456 2.96997 3.22297 3.62468L9.98098 11.9969V21.5993C9.98098 21.9361 10.3754 22.1222 10.639 21.9095L13.8667 19.3066C13.9609 19.2306 14.0156 19.1167 14.0156 18.9963V12.0242L20.7778 3.62359C21.305 2.96876 20.8347 2 19.9895 2Z" fill="#000"></path></g></svg>
                         </button>
 
-                        <select className={"filter-1 w-[49%] border-2 border-solid border-[#939ed2] rounded-md px-2 py-1 mt-2 mx-1 flex flex-col bg-[#eeeeee] "+(pbFilter == 'daily_analysis_form' ? "hidden": "")}>
-                            <option value="pb_odd-even">파워볼 홀/짝</option> 
-                            <option value="pb_over-under">파워볼 언더/오버</option>
-                            <option value="normalball_odd-even">파워볼 홀/짝</option>
-                            <option value="normalball_over-under">파워볼 언더/오버</option>
+                        <select onChange={ (event) => onFilterChange(event) } className={"filter-1 w-[49%] border-2 border-solid border-[#939ed2] rounded-md px-2 py-1 mt-2 mx-1 flex flex-col bg-[#eeeeee] "+(pbFilter == 'daily_analysis_form' ? "hidden": "")}>
+                            <option value="pb_odd">파워볼 홀/짝 pb_odd</option> 
+                            <option value="is_pb_under">파워볼 언더/오버 is_pb_under</option>
+                            <option value="num_sum_odd">파워볼 홀/짝 num_sum_odd</option>
+                            <option value="is_num_sum_under">파워볼 언더/오버 is_num_sum_under</option>
                         </select>
                     </div>
                     
