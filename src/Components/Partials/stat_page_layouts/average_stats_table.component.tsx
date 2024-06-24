@@ -5,7 +5,7 @@ import _ from "lodash";
 function AverageStatsTableComponent(props) {
     
     const [statistics, setStatistics] = useState(props.statistics);
-
+    let filters = props.filters.type;
     useEffect(() => {
         setStatistics(props.statistics);
 
@@ -27,12 +27,28 @@ function AverageStatsTableComponent(props) {
                                 
                                     {/* { JSON.stringify(value?.EVEN)}
                                     { _.size(value.EVEN)} */}
-                                    <div className="header">
+                                    { filters == 'pb_odd'&& <div className="header">
                                         {  value['EVEN'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-red-500 text-[0.5rem] text-center">짝수</div> }
                                         {  value['ODD'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-blue-500 text-[0.5rem] text-center">홀수</div> }
-                                    </div>
+                                    </div>}
 
-                                    <div className="even-container">
+                                    { filters === 'num_sum_odd' && <div className="nm-header">
+                                        {  value['NM_EVEN'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-red-500 text-[0.5rem] text-center">짝수</div> }
+                                        {  value['NM_ODD'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-blue-500 text-[0.5rem] text-center">홀수</div> }
+                                    </div>}
+
+                                    { filters === 'is_pb_under' && <div className="nm-header">
+                                        {  value['OVER'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-red-500 text-[0.5rem] text-center">오버</div> }
+                                        {  value['UNDER'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-blue-500 text-[0.5rem] text-center">언더</div> }
+                                    </div>}
+
+                                    { filters === 'is_num_sum_under' && <div className="nm-header">
+                                        {  value['OVER'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-red-500 text-[0.5rem] text-center">오버</div> }
+                                        {  value['UNDER'] && <div className="border-[0.05rem] border-solid border-gray-300 p-1 text-blue-500 text-[0.5rem] text-center">언더</div> }
+                                    </div>}
+                                    
+                                    {/* Table container  */}
+                                    { filters == 'pb_odd' && <div className="even-container">
                                         {  _.size(value.EVEN) > 1 && value.EVEN.map((col, i, {length}) => (
                                             
                                             <>
@@ -69,13 +85,91 @@ function AverageStatsTableComponent(props) {
                                             
                                         ))}
 
-                                    </div>
+                                    </div>}
 
-                                    <div className="odd-container">
+                                    { filters == 'pb_odd' && <div className="even-container">
                                         {  _.size(value.ODD) > 1 && value.ODD.map((col, i, {length}) => (
+                                            
+                                            <>
+                                            
+                                                { col.pb_odd == 'O' &&
+                                                    
+                                                    <div>
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
+                                                            <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                                { col.round }
+                                                            </div>      
+                                                        </div>
+
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                                        { _.size(value.ODD) }
+                                                                    </div>
+                                                                </div>
+                                                               
+                                                            </>
+                                                        }
+                                                    </div>
+
+                                                }
+
+                                            </>
+                                            
+                                        ))}
+
+                                    </div>}
+                                    
+                                    { filters == 'num_sum_odd' && <div className="even-nm-container">
+                                        {  _.size(value.NM_EVEN) > 1 && value.NM_EVEN.map((col, i, {length}) => (
+                                            
+                                            <>
+                                            
+                                                { col.num_sum_odd == 'E' &&
+                                                    
+                                                    <div>
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
+                                                            <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                                { col.round }
+                                                            </div>      
+                                                        </div>
+
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                                        { _.size(value.NM_EVEN) }
+                                                                    </div>
+                                                                </div>
+                                                               
+                                                            </>
+                                                        }
+                                                    </div>
+
+                                                }
+
+                                            </>
+                                            
+                                        ))}
+
+                                    </div>}
+
+                                    { filters == 'num_sum_odd' && <div className="odd-nm-container">
+                                        {  _.size(value.NM_ODD) > 1 && value.NM_ODD.map((col, i, {length}) => (
 
                                             <>
-                                                { col.pb_odd == 'O' &&
+                                                { col.num_sum_odd == 'O' &&
                                                     
                                                     <div>
                                                         <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
@@ -93,7 +187,7 @@ function AverageStatsTableComponent(props) {
 
                                                                 <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
                                                                     <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
-                                                                        { _.size(value.ODD) }
+                                                                        { _.size(value.NM_ODD) }
                                                                     </div>
                                                                 </div>
                                                                 
@@ -110,11 +204,142 @@ function AverageStatsTableComponent(props) {
 
                                     
 
-                                    </div>
+                                    </div>}
+
+                                    { filters == 'is_pb_under' && <div className="even-nm-container">
+                                        {  _.size(value.OVER) > 1 && value.OVER.map((col, i, {length}) => (     
+                                            <>     
+                                                { col.is_pb_under == 'Y' &&                   
+                                                    <div>
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
+                                                            <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                                { col.round }
+                                                            </div>      
+                                                        </div>
+
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                                        { _.size(value.OVER) }
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                        }
+                                                    </div>
+                                                }
+                                            </> 
+                                        ))}
+
+                                    </div>}
+
+                                    { filters == 'is_pb_under' && <div className="even-nm-container">
+                                        {  _.size(value.UNDER) > 1 && value.UNDER.map((col, i, {length}) => (     
+                                            <>     
+                                                { col.is_pb_under == 'N' &&                   
+                                                    <div>
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
+                                                            <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                                { col.round }
+                                                            </div>      
+                                                        </div>
+
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                                        { _.size(value.UNDER) }
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                        }
+                                                    </div>
+                                                }
+                                            </> 
+                                        ))}
+
+                                    </div>}
+                                    
+                                    {/* num_sum_under */}
+
+                                    { filters == 'is_num_sum_under' && <div className="even-nm-container">
+                                        {  _.size(value.OVER) > 1 && value.OVER.map((col, i, {length}) => (     
+                                            <>     
+                                                { col.is_num_sum_under == 'Y' &&                   
+                                                    <div>
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
+                                                            <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                                { col.round }
+                                                            </div>      
+                                                        </div>
+
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                                        { _.size(value.OVER) }
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                        }
+                                                    </div>
+                                                }
+                                            </> 
+                                        ))}
+
+                                    </div>}
+
+                                    { filters == 'is_num_sum_under' && <div className="even-nm-container">
+                                        {  _.size(value.UNDER) > 1 && value.UNDER.map((col, i, {length}) => (     
+                                            <>     
+                                                { col.is_num_sum_under == 'N' &&                   
+                                                    <div>
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
+                                                            <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                                { col.round }
+                                                            </div>      
+                                                        </div>
+
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                                        { _.size(value.UNDER) }
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                        }
+                                                    </div>
+                                                }
+                                            </> 
+                                        ))}
+
+                                    </div>}
+                                    
                                     {/* Non-Streak */}
                                     <>
 
-                                        {  _.size(value.EVEN) == 1 && value.EVEN &&
+                                        {  filters == 'pb_odd' && _.size(value.EVEN) == 1 && value.EVEN &&
                                             <>
                                                 <div className="grid grid-flow-row row-start-1">
                                                     <div className="border-[0.05rem] border-solid border-gray-300 p-1">
@@ -140,7 +365,7 @@ function AverageStatsTableComponent(props) {
 
                                         }
 
-                                        { _.size(value.ODD) == 1 && value.ODD &&
+                                        { filters == 'pb_odd' && _.size(value.ODD) == 1 && value.ODD &&
                                             <>
                                                 <div className="grid grid-flow-row row-start-1">
                                                     <div className="border-[0.05rem] border-solid border-gray-300 p-1">
@@ -165,6 +390,162 @@ function AverageStatsTableComponent(props) {
                                                 
                                             </>
                                         }
+
+                                        { filters == 'num_sum_odd' && _.size(value.NM_EVEN) == 1 && value.NM_EVEN &&
+                                            <>
+                                                <div className="grid grid-flow-row row-start-1">
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-1">
+                                                        <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            { value.NM_EVEN[0]['round'] }
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                { autoPadding( _.size(value.NM_EVEN)).map(item => (
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+    
+                                                ))}
+
+                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                        1
+                                                    </div>
+                                                </div>
+                                               
+                                            </>
+                                        }
+
+                                        { filters == 'num_sum_odd' &&  _.size(value.NM_ODD) == 1 && value.NM_ODD &&
+                                            <>
+                                                <div className="grid grid-flow-row row-start-1">
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-1">
+                                                        <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            { value.NM_ODD[0]['round'] }
+                                                        </div>
+                                                    </div>
+                                                    
+
+                                                </div>
+                                                
+                                                { autoPadding( _.size(value.NM_ODD)).map(item => (
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+    
+                                                ))}
+
+                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                        1
+                                                    </div>
+                                                </div>
+                                                
+                                            </>
+                                        }
+
+                                        { filters == 'is_pb_under' && _.size(value.OVER) == 1 && value.OVER &&
+                                            <>
+                                                <div className="grid grid-flow-row row-start-1">
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-1">
+                                                        <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            { value.OVER[0]['round'] }
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                { autoPadding( _.size(value.OVER)).map(item => (
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+    
+                                                ))}
+
+                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                        1
+                                                    </div>
+                                                </div>
+                                               
+                                            </>
+                                        }
+
+                                        { filters == 'is_pb_under' &&  _.size(value.UNDER) == 1 && value.UNDER &&
+                                            <>
+                                                <div className="grid grid-flow-row row-start-1">
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-1">
+                                                        <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            { value.UNDER[0]['round'] }
+                                                        </div>
+                                                    </div>
+                                                    
+
+                                                </div>
+                                                
+                                                { autoPadding( _.size(value.UNDER)).map(item => (
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+    
+                                                ))}
+
+                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                        1
+                                                    </div>
+                                                </div>
+                                                
+                                            </>
+                                        }
+
+                                        { filters == 'is_num_sum_under' && _.size(value.OVER) == 1 && value.OVER &&
+                                            <>
+                                                <div className="grid grid-flow-row row-start-1">
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-1">
+                                                        <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            { value.OVER[0]['round'] }
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                { autoPadding( _.size(value.OVER)).map(item => (
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+    
+                                                ))}
+
+                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                        1
+                                                    </div>
+                                                </div>
+                                               
+                                            </>
+                                        }
+
+                                        { filters == 'is_num_sum_under' &&  _.size(value.UNDER) == 1 && value.UNDER &&
+                                            <>
+                                                <div className="grid grid-flow-row row-start-1">
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-1">
+                                                        <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            { value.UNDER[0]['round'] }
+                                                        </div>
+                                                    </div>
+                                                    
+
+                                                </div>
+                                                
+                                                { autoPadding( _.size(value.UNDER)).map(item => (
+                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+    
+                                                ))}
+
+                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                        1
+                                                    </div>
+                                                </div>
+                                                
+                                            </>
+                                        }
+
+                                        {/* under/over */}
+                                        
                                     </>
                                 </div>
                             </div>
