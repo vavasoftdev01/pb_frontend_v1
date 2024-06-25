@@ -4,19 +4,15 @@ import _ from "lodash";
 
 function AverageStatsTableComponent(props) {
     
-    const [statistics, setStatistics] = useState(props.statistics);
+    let statistics = props.statistics;
     let filters = props.filters.type;
-    useEffect(() => {
-        setStatistics(props.statistics);
 
-        console.log(statistics);
-    });
-
-
+    console.log(props.filters)
     const renderDataTable = () => {
 
         return<>
             <div className="grid grid-flow-col">
+                {/* { JSON.stringify(statistics?.[0].results) } */}
                 { statistics?.[0].results.map((value, key, iteration) => (
                     
                     // STREAK
@@ -96,7 +92,7 @@ function AverageStatsTableComponent(props) {
                                                     
                                                     <div>
                                                         <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
-                                                            <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                                 { col.round }
                                                             </div>      
                                                         </div>
@@ -244,7 +240,7 @@ function AverageStatsTableComponent(props) {
                                                 { col.is_pb_under == 'N' &&                   
                                                     <div>
                                                         <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
-                                                            <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                                 { col.round }
                                                             </div>      
                                                         </div>
@@ -310,7 +306,7 @@ function AverageStatsTableComponent(props) {
                                                 { col.is_num_sum_under == 'N' &&                   
                                                     <div>
                                                         <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
-                                                            <div className="bg-blue-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                            <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                                 { col.round }
                                                             </div>      
                                                         </div>

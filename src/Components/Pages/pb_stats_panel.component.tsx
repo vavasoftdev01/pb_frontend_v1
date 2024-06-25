@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import AverageStatsTableComponent from "../Partials/stat_page_layouts/average_stats_table.component";
 import StatsBySelectionComponent from "../Partials/stat_page_layouts/stats_by_selection.component";
 import { io } from 'socket.io-client';
@@ -47,6 +47,10 @@ function PBStatsPanelComponent(props) {
             'type': e.target.value
         })
 
+        useMemo(() => {
+            stats;
+        }, [stats])
+
         socketEmitter();
     }
 
@@ -54,7 +58,7 @@ function PBStatsPanelComponent(props) {
         const stats_socket = io(`${import.meta.env.VITE_SOCKET_IO_URL}`);
         stats_socket.connect();
         stats_socket.emit('getStatistics', filters, (response) => {
-            setStats(response);
+            setStats(response); 
         });
         
         return stats_socket;
@@ -90,10 +94,10 @@ function PBStatsPanelComponent(props) {
                         </button>
 
                         <select onChange={ (event) => onFilterChange(event) } className={"filter-1 w-[49%] border-2 border-solid border-[#939ed2] rounded-md px-2 py-1 mt-2 mx-1 flex flex-col bg-[#eeeeee] "+(pbFilter == 'daily_analysis_form' ? "hidden": "")}>
-                            <option value="pb_odd">파워볼 홀/짝 pb_odd</option> 
-                            <option value="is_pb_under">파워볼 언더/오버 is_pb_under</option>
-                            <option value="num_sum_odd">파워볼 홀/짝 num_sum_odd</option>
-                            <option value="is_num_sum_under">파워볼 언더/오버 is_num_sum_under</option>
+                            <option value="pb_odd">파워볼 홀/짝</option> 
+                            <option value="is_pb_under">파워볼 언더/오버</option>
+                            <option value="num_sum_odd">파워볼 홀/짝</option>
+                            <option value="is_num_sum_under">파워볼 언더/오버</option>
                         </select>
                     </div>
                     

@@ -24,9 +24,9 @@ function StatsGraphData(props) {
 
     const normalball_even_count = graphData.data?.[0].normal_ball_results.normal_ball_even_count;
 
-    const normalball_even_count_percentage = Math.abs((100 * normalball_odd_count) / graphData.data?.[0].results_count).toFixed(2);
+    const normalball_even_count_percentage = Math.abs((100 * normalball_even_count) / graphData.data?.[0].results_count).toFixed(2);
 
-    const normalball_odd_count_percentage = Math.abs((100 * normalball_even_count) / graphData.data?.[0].results_count).toFixed(2);
+    const normalball_odd_count_percentage = Math.abs((100 * normalball_odd_count) / graphData.data?.[0].results_count).toFixed(2);
 
     const normalball_under_count = graphData.data?.[0].normal_ball_results.normal_ball_under_count;
 
@@ -57,7 +57,7 @@ function StatsGraphData(props) {
         setNormalBallDataSet(normalball_data_set);
 
         renderChart();
-      });
+      },[normalBallStreak, normalBallDataSet]);
 
 
       const renderChart = () => {
@@ -105,8 +105,8 @@ function StatsGraphData(props) {
                                 </div>
                             </div>
                             {/* Row 1 */}
-                            <div className="inline-flex mt-5 px-2">
-                                <div className="circle-container w-[5%] mt-1">
+                            <div className="inline-flex mt-5 px-2 mb-1">
+                                <div className="circle-container w-[5%] -mt-1">
                                     <div className={" text-white rounded-full -p-1 w-7 h-7 flex items-center justify-center mx-auto text-[0.5rem] " + ((graphData.data?.[0].even_count <  odd_count) ? 'bg-[#7a6c5e]': 'bg-[#055abb]')}>
                                         홀
                                     </div>
@@ -181,12 +181,17 @@ function StatsGraphData(props) {
                                 </div>
                             </div>
                             {/* Row 1 */}
-                            <div className="inline-flex mt-5 px-2">
-                                <div className="circle-container w-[5%] mt-1">
-                                    <div className={" text-white rounded-full -p-1 w-7 h-7 flex items-center justify-center mx-auto text-[0.5rem] " + ((normalball_even_count >  normalball_odd_count) ? 'bg-[#7a6c5e]': 'bg-[#055abb]')}>
+                            <div className="inline-flex mt-5 px-2 mb-1">
+                                { normalball_even_count >  normalball_odd_count && <div className="circle-container w-[5%] -mt-1">
+                                    <div className={" text-white rounded-full -p-1 w-7 h-7 flex items-center justify-center mx-auto text-[0.5rem] bg-[#055abb] "}>
                                         홀
                                     </div>
-                                </div>
+                                </div>}
+                                { normalball_odd_count > normalball_even_count && <div className="circle-container w-[5%] -mt-1">
+                                    <div className={" text-white rounded-full -p-1 w-7 h-7 flex items-center justify-center mx-auto text-[0.5rem] bg-[#055abb]"}>
+                                        홀
+                                    </div>
+                                </div>}
                                 <div className="progress-bar w-[94%] inline-flex text-white -mt-1">
                                     <div className={"h-7 -p-1 rounded-2xl w-[100%] border-solid border-[0.1rem] border-black bg-[#7a6c5e]"}>
                                         <div className="flex flex-row -p-1 relative">
@@ -196,17 +201,23 @@ function StatsGraphData(props) {
                                             <div className="w-1/2 z-20 text-right pr-1">
                                                 { normalball_odd_count } ({normalball_odd_count_percentage}%)
                                             </div>
-                                            <div className={"inline-flex w-full absolute"+(normalball_even_count >  normalball_odd_count ? " flex-row-reverse ": " ")}>
-                                                <div className={"z-10 rounded-full "+(normalball_even_count >  normalball_odd_count ? "bg-[#aa2d37]": "bg-[#055abb]")} style={{ width: (normalball_even_count >  normalball_odd_count ? normalball_odd_count_percentage: normalball_even_count_percentage)+'%'}}>&nbsp;</div>
+                                            <div className={"inline-flex w-full absolute"+(normalball_even_count >  normalball_odd_count ? " flex-row-reverse": " flex-row-reverse")}>
+                                                <div className={"z-10 rounded-full "+(normalball_even_count >  normalball_odd_count ? "bg-[#055abb]": "bg-[#aa2d37]")} style={{ width: (normalball_even_count >  normalball_odd_count ? normalball_even_count_percentage: normalball_odd_count_percentage)+'%'}}>&nbsp;</div>
                                             </div>
                                         </div>  
                                     </div>
                                 </div>
-                                <div className="circle-container w-[5%] -mt-1">
-                                    <div className={" text-white rounded-full -p-1 w-7 h-7 flex items-center justify-center mx-auto text-[0.5rem] " + ((normalball_even_count >  normalball_odd_count) ? 'bg-[#aa2d37]': 'bg-[#7a6c5e]')}>
+
+                                { normalball_even_count >  normalball_odd_count && <div className="circle-container w-[5%] -mt-1">
+                                    <div className={" text-white rounded-full -p-1 w-7 h-7 flex items-center justify-center mx-auto text-[0.5rem] " + ((normalball_even_count >  normalball_odd_count) ? 'bg-[#7a6c5e]': 'bg-[#aa2d37]')}>
                                         짝
                                     </div>
-                                </div>
+                                </div>}
+                                { normalball_odd_count > normalball_even_count && <div className="circle-container w-[5%] -mt-1">
+                                    <div className={" text-white rounded-full -p-1 w-7 h-7 flex items-center justify-center mx-auto text-[0.5rem] " + ((normalball_even_count >  normalball_odd_count) ? 'bg-[#7a6c5e]': 'bg-[#aa2d37]')}>
+                                        짝
+                                    </div>
+                                </div>}
                                 
                             </div>
                             {/* Row 2 */}
