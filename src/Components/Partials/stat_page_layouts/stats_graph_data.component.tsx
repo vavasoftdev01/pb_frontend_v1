@@ -47,17 +47,16 @@ function StatsGraphData(props) {
     let small_streak = graphData.data?.[0].streak.normal_ball_small_streak_count.length;
 
     ChartJS.register(ArcElement, Tooltip, Legend);
-
+    const normalball_streak = (graphData.data?.[0]) ? graphData.data?.[0].streak: []; 
     // Chart config
       useEffect(() => {
-        const normalball_streak = (graphData.data?.[0]) ? graphData.data?.[0].streak: []; 
-        setNormalBallStreak(normalball_streak)
-
+        
+        setNormalBallStreak({...normalBallStreak,normalball_streak})
         const normalball_data_set = (graphData.data?.[0]) ? graphData.data?.[0].normal_ball_results: {}; 
         setNormalBallDataSet(normalball_data_set);
 
         renderChart();
-      },[normalBallStreak, normalBallDataSet]);
+      },[normalball_streak, normalBallDataSet]);
 
 
       const renderChart = () => {

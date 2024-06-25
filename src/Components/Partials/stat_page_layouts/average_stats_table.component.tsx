@@ -6,6 +6,45 @@ function AverageStatsTableComponent(props) {
     
     let statistics = props.statistics;
     let filters = props.filters.type;
+    let even_over_count = statistics?.[0].results_count - statistics?.[0].even_count;
+    let odd_under_count = statistics?.[0].results_count - statistics?.[0].even_count;
+    let odd_percentage = Math.abs((odd_under_count * 100) / statistics?.[0].results_count).toFixed(2);
+    let even_percentage = Math.abs((statistics?.[0].even_count * 100) / statistics?.[0].results_count).toFixed(2);
+
+    if(filters == 'pb_odd') {
+        even_over_count = statistics?.[0].even_count;
+        odd_under_count = statistics?.[0].results_count - statistics?.[0].even_count;
+    }
+
+    if(filters == 'is_pb_under') {
+        even_over_count = statistics?.[0].results_count - statistics?.[0].over_count;
+        odd_under_count = statistics?.[0].results_count - statistics?.[0].under_count;
+    }
+
+    switch (filters) {
+        case 'is_pb_under':
+            even_over_count = statistics?.[0].over_count;
+            odd_under_count = statistics?.[0].under_count;
+            break;
+
+        case 'num_sum_odd':
+            even_over_count = statistics?.[0].normal_ball_results.normal_ball_even_count;
+            odd_under_count = statistics?.[0].normal_ball_results.normal_ball_odd_count;
+            break;
+
+        case 'is_num_sum_under':
+            even_over_count = statistics?.[0].normal_ball_results.normal_ball_over_count;
+            odd_under_count = statistics?.[0].normal_ball_results.normal_ball_under_count;
+            break;
+    
+        default:
+            even_over_count = statistics?.[0].even_count;
+            odd_under_count = statistics?.[0].results_count - statistics?.[0].even_count;
+            break;
+    }
+
+    odd_percentage = Math.abs((odd_under_count * 100) / statistics?.[0].results_count).toFixed(2);
+    even_percentage = Math.abs((even_over_count * 100) / statistics?.[0].results_count).toFixed(2);
 
     console.log(props.filters)
     const renderDataTable = () => {
@@ -559,9 +598,10 @@ function AverageStatsTableComponent(props) {
     }
 
     const autoPadding = (count) => {
-        const total_row_padding = 12;
+        const highest_streak = (statistics?.[0].streak.odd_streak_count[0].length > statistics?.[0].streak.even_streak_count[0].length) ? statistics?.[0].streak.odd_streak_count[0].length: statistics?.[0].streak.even_streak_count[0].length;
+
         let pad = 0;
-        for (let index = count; index <= total_row_padding; index++) {
+        for (let index = count; index <= highest_streak-1; index++) {
            pad += 1
             
         }
@@ -579,8 +619,9 @@ function AverageStatsTableComponent(props) {
                             </div>
                             <div className="ml-3 flex flex-col">
                                 <span className="text-sm">
-                                    <span className="font-bold">{ statistics?.[0].results_count - statistics?.[0].even_count }&nbsp;</span>
-                                    번 ({ Math.abs((statistics?.[0].results.length - statistics?.[0].even_count) * 100 / statistics?.[0].results.length).toFixed(2) }%)
+                                    <span className="font-bold">{ odd_under_count }&nbsp;</span>
+                                    번 ({ odd_percentage }%)
+                                   
                                 </span>
                                 <span className="text-gray-400 font-medium  text-xs">{ statistics?.[0].streak.odd_streak_count[0].length }&nbsp;연속 회</span>
                             </div>  
@@ -591,8 +632,9 @@ function AverageStatsTableComponent(props) {
                             </div>
                             <div className="ml-3 flex flex-col">
                                 <span className="text-sm">
-                                    <span className="font-bold">{ statistics?.[0].even_count  }&nbsp;</span>
-                                    번 ({ Math.abs((statistics?.[0].even_count * 100) / statistics?.[0].results.length).toFixed(2) }%)
+                                    <span className="font-bold">{ even_over_count  }&nbsp;</span>
+                                    번 ({ even_percentage }%)
+                                    
                                 </span>
                                 <span className="text-gray-400 font-medium text-xs">{ statistics?.[0].streak.even_streak_count[0].length }&nbsp;연속 회</span>
                             </div>  
@@ -604,10 +646,11 @@ function AverageStatsTableComponent(props) {
                             <div>
                                 <span className="circle bg-[#40c] px-[0.3rem] py-[0.5rem] rounded-full text-[0.5rem] text-white">퐁당</span>
                             </div>
-                            <div className="ml-3 flex flex-col">
+                            <div className="ml-3 mb-4 flex flex-col">
                                 <span className="text-sm">
                                 <span className="font-bold">{ statistics?.[0].streak.streak_count }&nbsp;</span>  
-                                번</span>
+                                    번
+                                </span>
                             </div>
                         </div>
                         <div className="w-full mt-2 inline-flex justify-end">

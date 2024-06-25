@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { io } from 'socket.io-client';
 import Typography from '@mui/material/Typography';
 import Pagination from '@mui/material/Pagination';
@@ -12,7 +12,7 @@ function ResultsDataTableComponent() {
     const [page, setPage] = useState(1);
     const [total, setTotal] = useState(0);
     const [params, setParams] = useState({ offset: 1, limit: 10 });
-
+    
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         
         const websocket = socketEmitter();
@@ -34,14 +34,14 @@ function ResultsDataTableComponent() {
         const websocket = socketEmitter();
         websocket.emit('getPaginatedResults', params, (response) => {
             results.current = response.results;
-            setTotal(response.total_results)
+            setTotal(response.total_results);
         });
 
         return (() => {
             websocket.disconnect();
         })
 
-    }, [total]);
+    }, [total, results.current]);
 
     return(
         <>
