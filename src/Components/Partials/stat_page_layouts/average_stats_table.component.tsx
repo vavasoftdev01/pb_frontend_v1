@@ -10,6 +10,8 @@ function AverageStatsTableComponent(props) {
     let odd_under_count = 0;
     let odd_percentage = Math.abs((odd_under_count * 100) / statistics?.[0].results_count).toFixed(2);
     let even_percentage = Math.abs((statistics?.[0].even_count * 100) / statistics?.[0].results_count).toFixed(2);
+    let streak_odd_count = (statistics?.[0].streak.odd_streak_count[0]) ? statistics?.[0].streak.odd_streak_count[0].length: 0;
+    let streak_even_count = (statistics?.[0].streak.even_streak_count[0]) ? statistics?.[0].streak.even_streak_count[0].length: 0;
     
     if(filters == 'pb_odd') {
         even_over_count = statistics?.[0].even_count;
@@ -598,7 +600,7 @@ function AverageStatsTableComponent(props) {
     }
 
     const autoPadding = (count) => {
-        const highest_streak = (statistics?.[0].streak.odd_streak_count[0].length > statistics?.[0].streak.even_streak_count[0].length) ? statistics?.[0].streak.odd_streak_count[0].length: statistics?.[0].streak.even_streak_count[0].length;
+        const highest_streak = (streak_odd_count > streak_even_count) ? streak_odd_count: streak_even_count;
 
         let pad = 0;
         for (let index = count; index <= highest_streak-1; index++) {
@@ -623,7 +625,7 @@ function AverageStatsTableComponent(props) {
                                     번 ({ odd_percentage }%)
                                    
                                 </span>
-                                <span className="text-gray-400 font-medium  text-xs">{ statistics?.[0].streak.odd_streak_count[0].length }&nbsp;연속 회</span>
+                                <span className="text-gray-400 font-medium  text-xs">{ streak_odd_count }&nbsp;연속 회</span>
                             </div>  
                         </div>
                         <div className="w-full inline-flex mt-2">
@@ -636,7 +638,7 @@ function AverageStatsTableComponent(props) {
                                     번 ({ even_percentage }%)
                                     
                                 </span>
-                                <span className="text-gray-400 font-medium text-xs">{ statistics?.[0].streak.even_streak_count[0].length }&nbsp;연속 회</span>
+                                <span className="text-gray-400 font-medium text-xs">{ streak_even_count }&nbsp;연속 회</span>
                             </div>  
                         </div>
                     </div>
