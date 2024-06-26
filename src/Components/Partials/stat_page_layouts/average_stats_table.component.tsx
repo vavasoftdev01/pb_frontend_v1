@@ -6,11 +6,11 @@ function AverageStatsTableComponent(props) {
     
     let statistics = props.statistics;
     let filters = props.filters.type;
-    let even_over_count = statistics?.[0].results_count - statistics?.[0].even_count;
-    let odd_under_count = statistics?.[0].results_count - statistics?.[0].even_count;
+    let even_over_count = 0;
+    let odd_under_count = 0;
     let odd_percentage = Math.abs((odd_under_count * 100) / statistics?.[0].results_count).toFixed(2);
     let even_percentage = Math.abs((statistics?.[0].even_count * 100) / statistics?.[0].results_count).toFixed(2);
-
+    
     if(filters == 'pb_odd') {
         even_over_count = statistics?.[0].even_count;
         odd_under_count = statistics?.[0].results_count - statistics?.[0].even_count;
@@ -242,41 +242,9 @@ function AverageStatsTableComponent(props) {
                                     </div>}
 
                                     { filters == 'is_pb_under' && <div className="even-nm-container">
-                                        {  _.size(value.OVER) > 1 && value.OVER.map((col, i, {length}) => (     
-                                            <>     
-                                                { col.is_pb_under == 'Y' &&                   
-                                                    <div>
-                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
-                                                            <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
-                                                                { col.round }
-                                                            </div>      
-                                                        </div>
-
-                                                        {/* last element for padding */}
-                                                        { i + 1 == length && <>
-                                                                { autoPadding( length).map(item => (
-                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
-                    
-                                                                ))}
-
-                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
-                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
-                                                                        { _.size(value.OVER) }
-                                                                    </div>
-                                                                </div>
-                                                            </>
-                                                        }
-                                                    </div>
-                                                }
-                                            </> 
-                                        ))}
-
-                                    </div>}
-
-                                    { filters == 'is_pb_under' && <div className="even-nm-container">
                                         {  _.size(value.UNDER) > 1 && value.UNDER.map((col, i, {length}) => (     
                                             <>     
-                                                { col.is_pb_under == 'N' &&                   
+                                                { col.is_pb_under == 'Y' &&                   
                                                     <div>
                                                         <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
                                                             <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
@@ -294,6 +262,38 @@ function AverageStatsTableComponent(props) {
                                                                 <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
                                                                     <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
                                                                         { _.size(value.UNDER) }
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                        }
+                                                    </div>
+                                                }
+                                            </> 
+                                        ))}
+
+                                    </div>}
+
+                                    { filters == 'is_pb_under' && <div className="even-nm-container">
+                                        {  _.size(value.OVER) > 1 && value.OVER.map((col, i, {length}) => (     
+                                            <>     
+                                                { col.is_pb_under == 'N' &&                   
+                                                    <div>
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
+                                                            <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                                { col.round }
+                                                            </div>      
+                                                        </div>
+
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                                        { _.size(value.OVER) }
                                                                     </div>
                                                                 </div>
                                                             </>
@@ -308,41 +308,9 @@ function AverageStatsTableComponent(props) {
                                     {/* num_sum_under */}
 
                                     { filters == 'is_num_sum_under' && <div className="even-nm-container">
-                                        {  _.size(value.OVER) > 1 && value.OVER.map((col, i, {length}) => (     
-                                            <>     
-                                                { col.is_num_sum_under == 'Y' &&                   
-                                                    <div>
-                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
-                                                            <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
-                                                                { col.round }
-                                                            </div>      
-                                                        </div>
-
-                                                        {/* last element for padding */}
-                                                        { i + 1 == length && <>
-                                                                { autoPadding( length).map(item => (
-                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
-                    
-                                                                ))}
-
-                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
-                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
-                                                                        { _.size(value.OVER) }
-                                                                    </div>
-                                                                </div>
-                                                            </>
-                                                        }
-                                                    </div>
-                                                }
-                                            </> 
-                                        ))}
-
-                                    </div>}
-
-                                    { filters == 'is_num_sum_under' && <div className="even-nm-container">
                                         {  _.size(value.UNDER) > 1 && value.UNDER.map((col, i, {length}) => (     
                                             <>     
-                                                { col.is_num_sum_under == 'N' &&                   
+                                                { col.is_num_sum_under == 'Y' &&                   
                                                     <div>
                                                         <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
                                                             <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
@@ -360,6 +328,38 @@ function AverageStatsTableComponent(props) {
                                                                 <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
                                                                     <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
                                                                         { _.size(value.UNDER) }
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                        }
+                                                    </div>
+                                                }
+                                            </> 
+                                        ))}
+
+                                    </div>}
+
+                                    { filters == 'is_num_sum_under' && <div className="even-nm-container">
+                                        {  _.size(value.OVER) > 1 && value.OVER.map((col, i, {length}) => (     
+                                            <>     
+                                                { col.is_num_sum_under == 'N' &&                   
+                                                    <div>
+                                                        <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
+                                                            <div className="bg-red-700 text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
+                                                                { col.round }
+                                                            </div>      
+                                                        </div>
+
+                                                        {/* last element for padding */}
+                                                        { i + 1 == length && <>
+                                                                { autoPadding( length).map(item => (
+                                                                    <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem]">&nbsp;</div>
+                    
+                                                                ))}
+
+                                                                <div className="border-[0.05rem] border-solid border-gray-300 p-[0.12rem] mx-auto text-[0.5rem]">
+                                                                    <div className="text-gray-500 -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.8rem]">
+                                                                        { _.size(value.OVER) }
                                                                     </div>
                                                                 </div>
                                                             </>

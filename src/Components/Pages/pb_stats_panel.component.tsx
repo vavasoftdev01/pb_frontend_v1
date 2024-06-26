@@ -206,7 +206,7 @@ function PBStatsPanelComponent(props) {
 
                 <AverageStatsTableComponent statistics={stats} filters={filters}/>
 
-                <StatsGraphData data={stats}/>
+                <StatsGraphData data={stats} filters={filters}/>
 
                 <ResultsDataTableComponent />
 
