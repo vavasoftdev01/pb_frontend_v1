@@ -21,6 +21,7 @@ function ResultsDataTableComponent(props) {
         websocket.emit('getPaginatedResults', params, (response) => {
             setPage(value);
             results.current = response.results; 
+            
         });
     };
 
@@ -41,7 +42,7 @@ function ResultsDataTableComponent(props) {
             websocket.disconnect();
         })
 
-    }, [total, results.current]);
+    }, []);
 
     return(
         <>

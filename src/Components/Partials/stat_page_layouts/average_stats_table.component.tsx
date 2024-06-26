@@ -311,7 +311,7 @@ function AverageStatsTableComponent(props) {
                                         {  _.size(value.UNDER) > 1 && value.UNDER.map((col, i, {length}) => (     
                                             <>     
                                                 { col.is_num_sum_under == 'Y' &&                   
-                                                    <div>
+                                                    <div key={col.idx}>
                                                         <div className=" border-[0.05rem] border-solid border-gray-300 text-[0.5rem] p-1 w-full text-center">
                                                             <div className="bg-[#055abb] text-white rounded-full -p-1 w-5 h-5 flex items-center justify-center mx-auto text-[0.5rem]">
                                                                 { col.round }
